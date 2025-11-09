@@ -1,6 +1,22 @@
 {{ 'section-hero.css' | asset_url | stylesheet_tag }}
 
-<div class="hero hero--{{ section.settings.height }}" style="{% if section.settings.image %}background-image: url({{ section.settings.image | image_url: width: 1920 }});{% endif %}">
+<div class="hero hero--{{ section.settings.height }}" {% if section.settings.image %}style="background-image: url({{ section.settings.image | image_url: width: 1920 }});"{% endif %}>
+  {% if section.settings.video %}
+    <video 
+      class="hero__video" 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+      {% if section.settings.image %}poster="{{ section.settings.image | image_url: width: 1920 }}"{% endif %}
+    >
+      <source 
+        src="{{ section.settings.video.sources[0].url }}" 
+        type="video/mp4"
+      >
+      Your browser does not support the video tag.
+    </video>
+  {% endif %}
   <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
 </div>
 
@@ -12,7 +28,12 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image"
+      "label": "Background image (also used as video poster)"
+    },
+    {
+      "type": "video_picker",
+      "id": "video",
+      "label": "Background video (from Shopify library)"
     },
     {
       "type": "text",
