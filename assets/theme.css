@@ -219,12 +219,12 @@ label {
 }
 
 /* ==========================================================================
-   Product Grid
-   ========================================================================== */
+    Product Grid
+    ========================================================================== */
 
 .product-grid {
   display: grid;
-  gap: 4rem 3rem;
+  gap: 3rem 2rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -252,6 +252,7 @@ label {
   .product-grid--4-col-desktop,
   .product-grid--5-col-desktop {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 1.5rem;
   }
 }
 
@@ -262,6 +263,7 @@ label {
 @media screen and (max-width: 749px) {
   .product-grid--2-col-mobile {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
   }
 }
 
@@ -363,7 +365,7 @@ label {
   }
 
   .product-grid {
-    gap: 2rem 1.5rem;
+    gap: 1.5rem 1rem;
   }
 }
 
@@ -392,7 +394,7 @@ label {
   }
 
   .product-grid {
-    gap: 3rem 2rem;
+    gap: 2.5rem 1.5rem;
   }
 }
 
