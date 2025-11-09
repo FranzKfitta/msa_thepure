@@ -1,0 +1,297 @@
+{%- comment -%}
+Register Page Template with Split-Screen UI
+File: templates/customers/register.liquid
+
+This template creates a modern, elegant split-screen registration experience with:
+- Left section: Hero image with brand messaging
+- Right section: Clean, minimalist registration form
+
+Features:
+- Responsive design (desktop split-screen, tablet/mobile stacked)
+- Real-time password strength indicator
+- Password confirmation validation
+- Theme variable integration
+- Full accessibility support
+- Smooth animations and transitions
+{%- endcomment -%}
+
+{{ 'component-auth.css' | asset_url | stylesheet_tag }}
+
+<div class="auth-page auth-page--register">
+  <div class="auth-container">
+    <!-- Left Section: Hero Image & Brand Story -->
+    <section class="auth-split__left">
+      <div class="auth-hero">
+        {%- if settings.auth_hero_image -%}
+          <img 
+            class="auth-hero__image" 
+            src="{{ settings.auth_hero_image | image_url: width: 600 }}"
+            alt="Brand story"
+            loading="lazy"
+          >
+        {%- else -%}
+          <div class="auth-hero__placeholder">
+            <svg class="auth-hero__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+        {%- endif -%}
+
+        {%- if settings.auth_hero_tagline -%}
+          <div class="auth-hero__content">
+            <p class="auth-hero__tagline">{{ settings.auth_hero_tagline }}</p>
+          </div>
+        {%- else -%}
+          <div class="auth-hero__content">
+            <p class="auth-hero__tagline">Join our community. Get exclusive access to new collections and special offers.</p>
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+
+    <!-- Right Section: Registration Form -->
+    <section class="auth-split__right">
+      <div class="auth-form-container">
+        <!-- Form Header -->
+        <div class="auth-form__header">
+          <h1 class="auth-form__title">{{ 'auth.register.title' | t: default: 'Create Account' }}</h1>
+          <p class="auth-form__subtitle">
+            {{ 'auth.register.subtitle' | t: default: 'Join our community for exclusive benefits' }}
+          </p>
+        </div>
+
+        <!-- Registration Form -->
+        <form method="post" action="/account/register" class="auth-form" id="register-form">
+          {%- if form.errors -%}
+            <div class="auth-form__error-alert" role="alert">
+              <svg class="auth-form__error-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <div class="auth-form__error-message">
+                <strong>{{ 'auth.form.error' | t: default: 'Please check the following:' }}</strong>
+                <ul class="auth-form__error-list">
+                  {%- for error in form.errors -%}
+                    <li>{{ error }}</li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          {%- endif -%}
+
+          <!-- First Name Field -->
+          <div class="form-group">
+            <label for="firstName" class="form-label">
+              {{ 'auth.register.first_name' | t: default: 'First Name' }}
+            </label>
+            <input 
+              type="text" 
+              name="customer[first_name]" 
+              id="firstName"
+              class="form-input"
+              placeholder="John"
+              required
+              autocomplete="given-name"
+              {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+              aria-required="true"
+            >
+          </div>
+
+          <!-- Last Name Field -->
+          <div class="form-group">
+            <label for="lastName" class="form-label">
+              {{ 'auth.register.last_name' | t: default: 'Last Name' }}
+            </label>
+            <input 
+              type="text" 
+              name="customer[last_name]" 
+              id="lastName"
+              class="form-input"
+              placeholder="Doe"
+              required
+              autocomplete="family-name"
+              {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+              aria-required="true"
+            >
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email" class="form-label">
+              {{ 'auth.register.email' | t: default: 'Email Address' }}
+            </label>
+            <input 
+              type="email" 
+              name="customer[email]" 
+              id="email"
+              class="form-input"
+              placeholder="you@example.com"
+              required
+              autocomplete="email"
+              {% if form.email %}value="{{ form.email }}"{% endif %}
+              aria-required="true"
+              aria-describedby="email-error"
+            >
+            {%- if form.errors.email -%}
+              <span class="form-error" id="email-error">
+                {{ form.errors.email }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password" class="form-label">
+              {{ 'auth.register.password' | t: default: 'Password' }}
+            </label>
+            <input 
+              type="password" 
+              name="customer[password]" 
+              id="password"
+              class="form-input"
+              placeholder="••••••••"
+              required
+              autocomplete="new-password"
+              aria-required="true"
+              aria-describedby="password-error password-requirements"
+            >
+            {%- if form.errors.password -%}
+              <span class="form-error" id="password-error">
+                {{ form.errors.password }}
+              </span>
+            {%- endif -%}
+            <p class="form-helper" id="password-requirements">
+              {{ 'auth.register.password_requirements' | t: default: 'Minimum 8 characters' }}
+            </p>
+          </div>
+
+          <!-- Password Strength Indicator -->
+          <div class="password-strength" id="password-strength" role="status" aria-live="polite">
+            <div class="password-strength__bar">
+              <div class="password-strength__fill" id="password-strength-fill"></div>
+            </div>
+            <p class="password-strength__text" id="password-strength-text"></p>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div class="form-group">
+            <label for="confirmPassword" class="form-label">
+              {{ 'auth.register.confirm' | t: default: 'Confirm Password' }}
+            </label>
+            <input 
+              type="password" 
+              name="customer[password_confirmation]" 
+              id="confirmPassword"
+              class="form-input"
+              placeholder="••••••••"
+              required
+              autocomplete="new-password"
+              aria-required="true"
+              aria-describedby="confirm-error"
+            >
+            {%- if form.errors.password_confirmation -%}
+              <span class="form-error" id="confirm-error">
+                {{ form.errors.password_confirmation }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <!-- Terms & Conditions -->
+          <div class="form-group form-group--checkbox">
+            <input 
+              type="checkbox" 
+              name="terms" 
+              id="terms"
+              class="form-checkbox"
+              required
+              aria-required="true"
+            >
+            <label for="terms" class="form-label form-label--checkbox">
+              {{ 'auth.register.agree_terms' | t: default: 'I agree to the Terms & Conditions' }}
+            </label>
+          </div>
+
+          <!-- Newsletter Opt-in -->
+          <div class="form-group form-group--checkbox">
+            <input 
+              type="checkbox" 
+              name="customer[accepts_marketing]" 
+              id="newsletter"
+              class="form-checkbox"
+              value="on"
+              checked
+            >
+            <label for="newsletter" class="form-label form-label--checkbox">
+              {{ 'auth.register.newsletter' | t: default: 'Subscribe to our newsletter for exclusive offers' }}
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="button button--primary button--full">
+            {{ 'auth.register.submit' | t: default: 'Create Account' }}
+          </button>
+        </form>
+
+        <!-- Sign In Link -->
+        <div class="auth-form__footer">
+          <p class="auth-form__footer-text">
+            {{ 'auth.register.have_account' | t: default: 'Already have an account?' }}
+            <a href="/account/login" class="form-link form-link--emphasis">
+              {{ 'auth.register.signin' | t: default: 'Sign In' }}
+            </a>
+          </p>
+        </div>
+
+        <!-- Optional: Continue Shopping -->
+        <div class="auth-form__footer-secondary">
+          <a href="/" class="form-link form-link--secondary">
+            {{ 'auth.register.continue_shopping' | t: default: 'Continue Shopping' }}
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('password');
+    const strengthBar = document.getElementById('password-strength-fill');
+    const strengthText = document.getElementById('password-strength-text');
+
+    if (passwordInput) {
+      passwordInput.addEventListener('input', function() {
+        const password = this.value;
+        const strength = calculatePasswordStrength(password);
+        
+        strengthBar.style.width = strength.percentage + '%';
+        strengthBar.className = 'password-strength__fill password-strength__fill--' + strength.level;
+        strengthText.textContent = strength.text;
+      });
+    }
+
+    function calculatePasswordStrength(password) {
+      let strength = 0;
+      const strengthLevels = [
+        { level: 'weak', percentage: 25, text: 'Weak' },
+        { level: 'fair', percentage: 50, text: 'Fair' },
+        { level: 'good', percentage: 75, text: 'Good' },
+        { level: 'strong', percentage: 100, text: 'Strong' }
+      ];
+
+      if (password.length >= 8) strength++;
+      if (password.length >= 12) strength++;
+
+      if (/[a-z]/.test(password)) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+      if (strength < 2) return strengthLevels[0];
+      if (strength < 4) return strengthLevels[1];
+      if (strength < 5) return strengthLevels[2];
+      return strengthLevels[3];
+    }
+  });
+</script>
