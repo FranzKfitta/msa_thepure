@@ -19,6 +19,30 @@
   object-fit: cover;
   object-position: center;
   z-index: 0;
+  display: block;
+}
+
+.hero[data-has-video="false"] {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+@supports (object-fit: cover) {
+  .hero__video {
+    object-fit: cover;
+  }
+}
+
+.hero--loading .hero__overlay {
+  opacity: 0.5 !important;
+}
+
+.hero--video-ready {
+  background-image: none !important;
+}
+
+.hero--video-error {
+  background-image: none !important;
 }
 
 .hero--small { min-height: 400px; }
@@ -163,4 +187,11 @@
   
   .hero__heading { font-size: 2rem; }
   .hero__subheading { font-size: 1rem; }
+}
+
+/* Desktop - Improved video support */
+@media screen and (min-width: 1024px) {
+  .hero[data-has-video="true"] {
+    background-attachment: scroll;
+  }
 }

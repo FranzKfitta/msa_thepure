@@ -1,7 +1,7 @@
 {{ 'section-hero.css' | asset_url | stylesheet_tag }}
 {{ 'hero.js' | asset_url | script_tag }}
 
-<div class="hero hero--{{ section.settings.height }}" {% if section.settings.image and section.settings.video == blank %}style="background-image: url({{ section.settings.image | image_url: width: 1920 }});"{% endif %}>
+<div class="hero hero--{{ section.settings.height }}" {% if section.settings.image and section.settings.video == blank %}style="background-image: url({{ section.settings.image | image_url: width: 1920 }});"{% endif %} data-has-video="{% if section.settings.video %}true{% else %}false{% endif %}">
   {% if section.settings.video %}
     <video 
       class="hero__video" 
@@ -10,12 +10,15 @@
       loop 
       playsinline
       {% if section.settings.image %}poster="{{ section.settings.image | image_url: width: 1920 }}"{% endif %}
+      aria-hidden="true"
     >
-      <source 
-        src="{{ section.settings.video.sources[0].url }}" 
-        type="video/mp4"
-      >
-      Your browser does not support the video tag.
+      {% for source in section.settings.video.sources %}
+        <source 
+          src="{{ source.url }}" 
+          type="{{ source.format | prepend: 'video/' }}"
+        >
+      {% endfor %}
+      <p>Your browser does not support the video tag. Please use the background image instead.</p>
     </video>
   {% endif %}
   <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
@@ -47,12 +50,13 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image (also used as video poster)"
+      "label": "Background image",
+      "info": "Used as fallback when no video is selected, or as video poster image"
     },
     {
-      "type": "video_picker",
+      "type": "video",
       "id": "video",
-      "label": "Background video (from Shopify library)"
+      "label": "Background video"
     },
     {
       "type": "text",
