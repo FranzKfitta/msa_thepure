@@ -4,6 +4,7 @@
       "skip_to_text": "Passer au contenu",
       "close": "Fermer",
       "menu": "Menu",
+      "expand_submenu": "Développer le sous-menu",
       "refresh_page": "Le choix d'une sélection entraîne l'actualisation d'une page entière.",
       "link_messages": {
         "new_window": "S'ouvre dans une nouvelle fenêtre."
