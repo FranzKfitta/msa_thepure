@@ -32,22 +32,6 @@
   {{ content_for_header }}
 
   <script>
-    // Apply theme immediately to prevent flash
-    (function() {
-      var fallbackTheme = 'light';
-      try {
-        var storageKey = 'theme-preference';
-        var storedTheme = localStorage.getItem(storageKey);
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme = storedTheme || (prefersDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', fallbackTheme);
-      }
-    })();
-  </script>
-
-  <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     window.theme = window.theme || {};
     theme.routes = {
@@ -71,7 +55,6 @@
   </script>
 
   {{ 'theme.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'theme-toggle.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 </head>
 
