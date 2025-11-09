@@ -21,12 +21,14 @@
 
 .header__wrapper {
   padding: 1rem 0;
+  container-type: inline-size;
 }
 
 .header__nav {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
+  min-height: 72px;
 }
 
 .header__menu-toggle {
@@ -55,6 +57,8 @@
 .header__logo {
   flex: 1;
   margin-right: auto;
+  display: flex;
+  align-items: center;
 }
 
 .header__logo-link {
@@ -76,11 +80,13 @@
 
 .header__menu-list {
   display: none;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
+  flex: 1;
+  align-self: center;
 }
 
 .header__menu-item {
@@ -129,6 +135,13 @@
   z-index: 100;
 }
 
+/* Ensure submenu appears above wrapped menu items */
+@media screen and (min-width: 1024px) {
+  .header__submenu {
+    z-index: 100;
+  }
+}
+
 .header__menu-item:hover .header__submenu {
   opacity: 1;
   visibility: visible;
@@ -159,6 +172,8 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex: 0 0 auto;
+  margin-top: 0;
 }
 
 .header__icon {
@@ -371,6 +386,7 @@
   
   .header__nav {
     gap: 1.5rem;
+    min-height: 80px;
   }
   
   .header__logo-image {
@@ -384,6 +400,7 @@
   .header__menu-list {
     display: flex;
     gap: 1.5rem;
+    align-items: flex-start;
   }
   
   .header__menu-link {
@@ -408,6 +425,7 @@
   
   .header__nav {
     gap: 2rem;
+    min-height: 88px;
   }
   
   .header__menu-toggle {
@@ -431,6 +449,9 @@
     display: flex;
     gap: 2rem;
     flex: 1;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   
   .header__menu-link {
@@ -448,24 +469,108 @@
   }
 }
 
-/* Large desktop for better spacing with many menu items */
+/* Large desktop - optimized spacing for many menu items */
 @media screen and (min-width: 1200px) {
   .header__menu-list {
-    gap: 2.5rem;
+    gap: 1.75rem;
   }
   
   .header__menu-link {
-    padding: 0.75rem 1.75rem;
+    padding: 0.75rem 1.5rem;
   }
 }
 
-/* Extra large desktop for maximum menu item support */
+/* Extra large desktop - maximum menu item support with compressed spacing */
 @media screen and (min-width: 1400px) {
   .header__menu-list {
-    gap: 3rem;
+    gap: 1.5rem;
   }
   
   .header__menu-link {
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+/* Ultra-wide screens - prevent excessive spacing */
+@media screen and (min-width: 1600px) {
+  .page-width {
+    max-width: 1600px;
+  }
+  
+  .header__menu-list {
+    gap: 1.75rem;
+  }
+  
+  .header__menu-link {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Container Queries for dynamic menu spacing
+   ========================================================================== */
+
+@container (max-width: 1200px) {
+  .header__menu-list {
+    gap: 1.5rem;
+  }
+  
+  .header__menu-link {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+@container (max-width: 1000px) {
+  .header__menu-list {
+    gap: 1.25rem;
+  }
+  
+  .header__menu-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@container (max-width: 900px) {
+  .header__menu-list {
+    gap: 1rem;
+  }
+  
+  .header__menu-link {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ==========================================================================
+   Menu overflow utilities
+   ========================================================================== */
+
+/* Prevent horizontal scroll at all breakpoints */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure header never causes horizontal overflow */
+.header {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Menu item hover state adjustments for wrapped items */
+@media screen and (min-width: 1024px) {
+  .header__menu-item:hover .header__submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  /* Ensure dropdown appears above wrapped menu rows */
+  .header__menu-item {
+    z-index: 1;
+  }
+  
+  .header__menu-item:hover {
+    z-index: 10;
   }
 }
