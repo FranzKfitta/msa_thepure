@@ -95,7 +95,7 @@
               {{ link.title | escape }}
             </a>
             {% if link.links != blank %}
-              <button type="button" class="mobile-menu__expand" aria-expanded="false">
+              <button type="button" class="mobile-menu__expand" aria-expanded="false" aria-label="{{ 'general.accessibility.expand_submenu' | t }}">
                 {% render 'icon-chevron' %}
               </button>
               <ul class="mobile-menu__submenu" role="list">
