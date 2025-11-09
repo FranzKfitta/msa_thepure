@@ -1,6 +1,7 @@
 {{ 'section-hero.css' | asset_url | stylesheet_tag }}
+{{ 'hero.js' | asset_url | script_tag }}
 
-<div class="hero hero--{{ section.settings.height }}" {% if section.settings.image %}style="background-image: url({{ section.settings.image | image_url: width: 1920 }});"{% endif %}>
+<div class="hero hero--{{ section.settings.height }}" {% if section.settings.image and section.settings.video == blank %}style="background-image: url({{ section.settings.image | image_url: width: 1920 }});"{% endif %}>
   {% if section.settings.video %}
     <video 
       class="hero__video" 
@@ -18,6 +19,24 @@
     </video>
   {% endif %}
   <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+  
+  {% if section.settings.heading or section.settings.subheading or section.settings.button_text %}
+    <div class="hero__content hero__text--{{ section.settings.text_alignment }}">
+      {% if section.settings.heading %}
+        <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+      
+      {% if section.settings.subheading %}
+        <p class="hero__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+      
+      {% if section.settings.button_text and section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="button button--primary">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
