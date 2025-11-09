@@ -191,7 +191,17 @@
   line-height: 1.6;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 599px) {
+  .auth-form__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-form__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
   .auth-form__header {
     margin-bottom: 2rem;
   }
