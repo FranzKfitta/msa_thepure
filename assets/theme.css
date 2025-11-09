@@ -329,20 +329,102 @@ label {
 }
 
 /* ==========================================================================
-   Responsive
-   ========================================================================== */
+    Responsive
+    ========================================================================== */
 
+/* Early Mobile - Extra Small Screens (320px - 599px) */
+@media screen and (max-width: 599px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+  h4 { font-size: 1rem; }
+
+  .page-width {
+    padding: 0 1rem;
+  }
+
+  .section-padding {
+    padding: 2rem 0;
+  }
+
+  .button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  .product-grid {
+    gap: 2rem 1.5rem;
+  }
+}
+
+/* Tablet - Medium Screens (600px - 989px) */
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .page-width {
+    padding: 0 1.5rem;
+  }
+
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  .product-grid {
+    gap: 3rem 2rem;
+  }
+}
+
+/* Mobile (max-width: 749px) - Kept for compatibility */
 @media screen and (max-width: 749px) {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.25rem; }
-  
+
   .page-width {
     padding: 0 1.5rem;
   }
-  
+
   .section-padding {
     padding: 3rem 0;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Large Desktop (1200px+) */
+@media screen and (min-width: 1200px) {
+  .page-width {
+    padding: 0 4rem;
   }
 }
 
