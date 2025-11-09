@@ -155,6 +155,39 @@
       "title": "Compte"
     }
   },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Accédez à votre compte et à l'historique de vos commandes",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "forgot": "Oublié?",
+      "remember": "Se souvenir de moi",
+      "submit": "Connexion",
+      "no_account": "Vous n'avez pas de compte?",
+      "create": "Créer un",
+      "continue_shopping": "Continuer vos achats"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Rejoignez notre communauté pour des avantages exclusifs",
+      "first_name": "Prénom",
+      "last_name": "Nom de famille",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "password_requirements": "Minimum 8 caractères",
+      "confirm": "Confirmer le mot de passe",
+      "agree_terms": "J'accepte les Conditions d'utilisation",
+      "newsletter": "S'abonner à notre infolettre pour des offres exclusives",
+      "submit": "Créer un compte",
+      "have_account": "Vous avez déjà un compte?",
+      "signin": "Connexion",
+      "continue_shopping": "Continuer vos achats"
+    },
+    "form": {
+      "error": "Erreur"
+    }
+  },
   "footer": {
     "copyright": "Tous droits réservés."
   }

@@ -155,6 +155,39 @@
       "title": "Account"
     }
   },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Access your account and order history",
+      "email": "Email Address",
+      "password": "Password",
+      "forgot": "Forgot?",
+      "remember": "Remember me",
+      "submit": "Sign In",
+      "no_account": "Don't have an account?",
+      "create": "Create one",
+      "continue_shopping": "Continue Shopping"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join our community for exclusive benefits",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email Address",
+      "password": "Password",
+      "password_requirements": "Minimum 8 characters",
+      "confirm": "Confirm Password",
+      "agree_terms": "I agree to the Terms & Conditions",
+      "newsletter": "Subscribe to our newsletter for exclusive offers",
+      "submit": "Create Account",
+      "have_account": "Already have an account?",
+      "signin": "Sign In",
+      "continue_shopping": "Continue Shopping"
+    },
+    "form": {
+      "error": "Error"
+    }
+  },
   "footer": {
     "copyright": "All rights reserved."
   }
