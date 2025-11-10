@@ -188,6 +188,26 @@
       "error": "Erreur"
     }
   },
+  "contact": {
+    "form": {
+      "title": "Nous Contacter",
+      "subtitle": "Nous aimerions vous entendre. Envoyez-nous un message.",
+      "name": "Nom complet",
+      "name_placeholder": "Votre nom",
+      "email": "Adresse e-mail",
+      "email_placeholder": "votre@email.com",
+      "subject": "Sujet",
+      "subject_placeholder": "Comment pouvons-nous vous aider?",
+      "message": "Message",
+      "message_placeholder": "Parlez-nous davantage de votre demande...",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Merci! Nous avons reçu votre message et vous répondrons bientôt.",
+      "error": "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
+      "required": "Ce champ est obligatoire",
+      "invalid_email": "Veuillez entrer une adresse e-mail valide"
+    }
+  },
   "footer": {
     "copyright": "Tous droits réservés."
   }

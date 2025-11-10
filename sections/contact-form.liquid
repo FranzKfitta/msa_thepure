@@ -1,0 +1,153 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'contact-form.js' | asset_url }}" defer></script>
+
+<div class="contact-form-section page-width">
+  <div class="contact-form__container">
+    <!-- Left side: Image -->
+    <div class="contact-form__image-wrapper">
+      {% if section.settings.image %}
+        <img 
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="{{ section.settings.image_alt | escape }}"
+          class="contact-form__image"
+          loading="lazy"
+          width="800"
+          height="800"
+        >
+      {% else %}
+        <div class="contact-form__image-placeholder">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="100" cy="60" r="25" fill="currentColor" opacity="0.3"/>
+            <path d="M 50 100 Q 100 120 150 100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+            <rect x="40" y="140" width="120" height="40" fill="currentColor" opacity="0.3" rx="4"/>
+          </svg>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Right side: Form -->
+    <div class="contact-form__form-wrapper">
+      <div class="contact-form__header">
+        <h1 class="contact-form__title">{{ section.settings.title | default: 'contact.form.title' | t }}</h1>
+        {% if section.settings.subtitle %}
+          <p class="contact-form__subtitle">{{ section.settings.subtitle | default: 'contact.form.subtitle' | t }}</p>
+        {% endif %}
+      </div>
+
+      <form class="contact-form" id="contact-form" method="POST" action="/contact#contact-form">
+        <input type="hidden" name="form_type" value="contact">
+
+        <div class="contact-form__group">
+          <label for="contact-name" class="contact-form__label">{{ 'contact.form.name' | t }}</label>
+          <input 
+            type="text"
+            id="contact-name"
+            name="contact[name]"
+            class="contact-form__input"
+            placeholder="{{ 'contact.form.name_placeholder' | t }}"
+            required
+            aria-required="true"
+          >
+          <span class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__group">
+          <label for="contact-email" class="contact-form__label">{{ 'contact.form.email' | t }}</label>
+          <input 
+            type="email"
+            id="contact-email"
+            name="contact[email]"
+            class="contact-form__input"
+            placeholder="{{ 'contact.form.email_placeholder' | t }}"
+            required
+            aria-required="true"
+          >
+          <span class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__group">
+          <label for="contact-subject" class="contact-form__label">{{ 'contact.form.subject' | t }}</label>
+          <input 
+            type="text"
+            id="contact-subject"
+            name="contact[subject]"
+            class="contact-form__input"
+            placeholder="{{ 'contact.form.subject_placeholder' | t }}"
+            required
+            aria-required="true"
+          >
+          <span class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__group">
+          <label for="contact-message" class="contact-form__label">{{ 'contact.form.message' | t }}</label>
+          <textarea 
+            id="contact-message"
+            name="contact[body]"
+            class="contact-form__textarea"
+            placeholder="{{ 'contact.form.message_placeholder' | t }}"
+            rows="5"
+            required
+            aria-required="true"
+          ></textarea>
+          <span class="contact-form__error" role="alert"></span>
+        </div>
+
+        <div class="contact-form__group contact-form__group--full">
+          <button 
+            type="submit" 
+            class="contact-form__submit"
+            data-loading-text="{{ 'contact.form.sending' | t }}"
+          >
+            {{ 'contact.form.submit' | t }}
+          </button>
+        </div>
+
+        <div class="contact-form__message contact-form__message--success" role="status" aria-live="polite">
+          {{ 'contact.form.success' | t }}
+        </div>
+        <div class="contact-form__message contact-form__message--error" role="alert" aria-live="assertive">
+          {{ 'contact.form.error' | t }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Form title",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Form subtitle",
+      "default": "We'd love to hear from you. Send us a message."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Add a visually appealing image for the left side of the form"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Contact form image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form"
+    }
+  ]
+}
+{% endschema %}
