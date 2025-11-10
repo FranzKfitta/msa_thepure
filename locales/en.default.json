@@ -188,6 +188,26 @@
       "error": "Error"
     }
   },
+  "contact": {
+    "form": {
+      "title": "Get in Touch",
+      "subtitle": "We'd love to hear from you. Send us a message.",
+      "name": "Full Name",
+      "name_placeholder": "Your name",
+      "email": "Email Address",
+      "email_placeholder": "your@email.com",
+      "subject": "Subject",
+      "subject_placeholder": "How can we help?",
+      "message": "Message",
+      "message_placeholder": "Tell us more about your inquiry...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! We've received your message and will get back to you soon.",
+      "error": "There was an error sending your message. Please try again.",
+      "required": "This field is required",
+      "invalid_email": "Please enter a valid email address"
+    }
+  },
   "footer": {
     "copyright": "All rights reserved."
   }
