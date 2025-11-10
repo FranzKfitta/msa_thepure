@@ -24,7 +24,6 @@
 
 .header__wrapper {
   padding: 1rem 0;
-  container-type: inline-size;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -611,8 +610,7 @@ body {
 
 /* Ensure header never causes horizontal overflow */
 .header {
-  overflow-x: hidden;
-  overflow-y: visible;
+  overflow: visible;
   width: 100%;
 }
 
