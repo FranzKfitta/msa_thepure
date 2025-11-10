@@ -1,23 +1,32 @@
-<div class="collection-banner">
-  <div class="page-width">
-    {% if section.settings.show_collection_image and collection.image %}
-      <div class="collection-banner__image">
-        <img
-          src="{{ collection.image | image_url: width: 1200 }}"
-          alt="{{ collection.image.alt | escape }}"
-          loading="eager"
-          width="{{ collection.image.width }}"
-          height="{{ collection.image.height }}"
-        >
-      </div>
-    {% endif %}
+{{ 'section-collection-banner.css' | asset_url | stylesheet_tag }}
 
-    {% if section.settings.show_collection_description and collection.description != blank %}
+<div class="collection-banner">
+  {% if section.settings.show_collection_image and collection.image %}
+    <div class="collection-banner__image-wrapper">
+      <img
+        src="{{ collection.image | image_url: width: 1200 }}"
+        srcset="
+          {{ collection.image | image_url: width: 600 }} 600w,
+          {{ collection.image | image_url: width: 900 }} 900w,
+          {{ collection.image | image_url: width: 1200 }} 1200w
+        "
+        sizes="100vw"
+        alt="{{ collection.image.alt | escape }}"
+        loading="eager"
+        width="{{ collection.image.width }}"
+        height="{{ collection.image.height }}"
+        class="collection-banner__image"
+      >
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_collection_description and collection.description != blank %}
+    <div class="page-width">
       <div class="collection-banner__description rte">
         {{ collection.description }}
       </div>
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
