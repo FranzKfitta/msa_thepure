@@ -230,30 +230,34 @@ label {
   list-style: none;
 }
 
-.product-grid--2-col-desktop {
-  grid-template-columns: repeat(2, 1fr);
+/* Desktop column classes - only apply at 990px and above */
+@media screen and (min-width: 990px) {
+  .product-grid--2-col-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-grid--3-col-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-grid--4-col-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .product-grid--5-col-desktop {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .product-grid--6-col-desktop {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .product-grid--7-col-desktop {
+    grid-template-columns: repeat(7, 1fr);
+  }
 }
 
-.product-grid--3-col-desktop {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.product-grid--4-col-desktop {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.product-grid--5-col-desktop {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.product-grid--6-col-desktop {
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.product-grid--7-col-desktop {
-  grid-template-columns: repeat(7, 1fr);
-}
-
+/* Tablet breakpoint (600px - 989px) - All desktop grids become 2 columns */
 @media screen and (max-width: 989px) {
   .product-grid--2-col-desktop,
   .product-grid--3-col-desktop,
@@ -266,14 +270,24 @@ label {
   }
 }
 
-.product-grid--1-col-mobile {
-  grid-template-columns: 1fr;
-}
+/* Mobile breakpoint - Respect columns_mobile setting (applies at 599px and below) */
+@media screen and (max-width: 599px) {
+  /* Override desktop grid classes to prevent their gap from applying */
+  .product-grid--2-col-desktop,
+  .product-grid--3-col-desktop,
+  .product-grid--4-col-desktop,
+  .product-grid--5-col-desktop,
+  .product-grid--6-col-desktop,
+  .product-grid--7-col-desktop {
+    gap: 1.5rem 1rem;
+  }
 
-@media screen and (max-width: 749px) {
+  .product-grid--1-col-mobile {
+    grid-template-columns: 1fr;
+  }
+
   .product-grid--2-col-mobile {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 1rem;
   }
 }
 
