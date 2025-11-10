@@ -1,3 +1,4 @@
+{% unless product.type contains 'Gift' or product.gift_card %}
 <div class="product-card">
   <a href="{{ product.url }}" class="product-card__link">
     <div class="product-card__image-wrapper">
@@ -42,3 +43,4 @@
     </div>
   </a>
 </div>
+{% endunless %}
