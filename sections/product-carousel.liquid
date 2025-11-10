@@ -21,6 +21,7 @@
           {% if section.settings.collection != blank %}
             {% assign collection = collections[section.settings.collection] %}
             {% for product in collection.products limit: section.settings.products_to_show %}
+              {% unless product.type contains 'Gift' or product.gift_card %}
               <div class="product-carousel__item">
                 <div class="product-carousel-card">
                   <a href="{{ product.url }}" class="product-carousel-card__link">
@@ -85,9 +86,10 @@
                       </svg>
                     </button>
                   {% endif %}
-                </div>
-              </div>
-            {% endfor %}
+                  </div>
+                  </div>
+                  {% endunless %}
+                  {% endfor %}
           {% else %}
             {% comment %} Placeholder products for when no collection is selected {% endcomment %}
             {% for i in (1..section.settings.products_to_show) %}
