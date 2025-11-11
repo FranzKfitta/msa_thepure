@@ -73,6 +73,7 @@
     },
     "facets": {
       "clear_all": "Tout effacer",
+      "filter_label": "Filtrer",
       "from": "De",
       "to": "À"
     },

@@ -258,16 +258,24 @@ label {
   }
 }
 
-/* Tablet breakpoint (600px - 989px) - All desktop grids become 2 columns */
-@media screen and (max-width: 989px) {
-  .product-grid--2-col-desktop,
+/* Tablet breakpoint (600px - 989px) - Adjust based on desktop columns */
+@media screen and (min-width: 600px) and (max-width: 989px) {
   .product-grid--3-col-desktop,
   .product-grid--4-col-desktop,
-  .product-grid--5-col-desktop,
+  .product-grid--5-col-desktop {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.25rem;
+  }
+
+  .product-grid--2-col-desktop {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.25rem;
+  }
+
   .product-grid--6-col-desktop,
   .product-grid--7-col-desktop {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.25rem;
   }
 }
 
@@ -280,7 +288,7 @@ label {
   .product-grid--5-col-desktop,
   .product-grid--6-col-desktop,
   .product-grid--7-col-desktop {
-    gap: 1rem 0.75rem;
+    gap: 1.25rem 1rem;
   }
 
   .product-grid--1-col-mobile {
