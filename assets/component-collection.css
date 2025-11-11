@@ -1,12 +1,16 @@
 .collection { 
   padding: 2rem 0 4rem 0; 
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 @media screen and (max-width: 599px) {
   .collection { 
     padding: 0;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 }
 
@@ -25,6 +29,8 @@
   text-align: left;
   background-color: #ffffff;
   padding: 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 599px) {
@@ -32,11 +38,11 @@
     font-size: 2rem;
     text-align: left;
     margin-bottom: 0;
-    background-color: #e07856;
+    background-color: #ffffff;
     color: #000000;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 1.25rem 0.75rem;
+    padding: 1.25rem 1rem;
   }
 }
 
@@ -64,6 +70,8 @@
     border-bottom: 1px solid #e0e0e0;
     height: 44px;
     flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -247,7 +255,7 @@
   }
 
   .collection__controls-bar {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 1rem;
   }
 
   .facets-wrapper {
@@ -590,12 +598,16 @@
   width: 100%;
   padding: 0;
   margin-top: 2rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 599px) {
   .collection__products {
-    padding: 0 0.75rem;
+    padding: 0 1rem;
     margin-top: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 

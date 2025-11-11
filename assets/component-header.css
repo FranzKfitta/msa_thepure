@@ -9,8 +9,8 @@
 /* Mobile header styling */
 @media screen and (max-width: 599px) {
   .header {
-    background-color: #e07856;
-    border-bottom-color: #e07856;
+    background-color: #ffffff;
+    border-bottom-color: #E0E0E0;
   }
 
   .header__menu-toggle svg,
