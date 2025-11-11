@@ -15,27 +15,39 @@ class FacetFiltersForm extends HTMLElement {
 
   setupMobileFilterToggle() {
     const filterToggle = document.querySelector('[data-filter-toggle]');
+    const filterClose = document.querySelector('[data-filter-close]');
     const facetsWrapper = document.querySelector('.facets-wrapper');
 
-    if (!filterToggle || !facetsWrapper) return;
+    if (!facetsWrapper) return;
 
-    // Show/hide filter drawer on mobile
-    filterToggle.addEventListener('click', () => {
-      facetsWrapper.classList.toggle('active');
-      document.body.style.overflow = facetsWrapper.classList.contains('active') ? 'hidden' : '';
-    });
+    if (filterToggle) {
+      // Show/hide filter drawer on mobile
+      filterToggle.addEventListener('click', () => {
+        facetsWrapper.classList.toggle('active');
+        document.body.style.overflow = facetsWrapper.classList.contains('active') ? 'hidden' : '';
+      });
+    }
+
+    if (filterClose) {
+      // Close filter drawer via close button
+      filterClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        facetsWrapper.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
 
     // Close filter drawer when clicking outside
     document.addEventListener('click', (e) => {
       if (facetsWrapper.classList.contains('active') && 
           !facetsWrapper.contains(e.target) && 
-          !filterToggle.contains(e.target)) {
+          !filterToggle?.contains(e.target)) {
         facetsWrapper.classList.remove('active');
         document.body.style.overflow = '';
       }
     });
 
-    // Close filter drawer when applying filters
+    // Close filter drawer when applying filters on mobile
     this.form.addEventListener('input', () => {
       if (window.innerWidth < 600) {
         facetsWrapper.classList.remove('active');
