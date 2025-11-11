@@ -7,6 +7,9 @@
 
     {% if section.settings.enable_filtering %}
       <div class="collection__filters-section">
+        <button class="collection__filter-toggle" aria-label="Toggle filters">
+          <span class="collection__filter-label">{{ 'products.facets.filter_label' | t: count: collection.filters.size }}</span>
+        </button>
         <facet-filters-form class="facets-wrapper">
           <form id="FacetFiltersForm" class="facets">
             {% for filter in collection.filters %}
@@ -73,9 +76,9 @@
 
             {% if collection.filters != empty %}
               <div class="facets__actions">
-                <a href="{{ collection.url }}" class="facets__clear">
+                <button type="button" class="facets__clear" onclick="window.location.href='{{ collection.url }}';">
                   {{ 'products.facets.clear_all' | t }}
-                </a>
+                </button>
               </div>
             {% endif %}
           </form>
@@ -142,10 +145,10 @@
     {
       "type": "range",
       "id": "columns_desktop",
-      "min": 2,
-      "max": 7,
+      "min": 3,
+      "max": 5,
       "step": 1,
-      "default": 7,
+      "default": 4,
       "label": "Number of columns on desktop"
     },
     {

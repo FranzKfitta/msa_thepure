@@ -73,6 +73,7 @@
     },
     "facets": {
       "clear_all": "Clear all",
+      "filter_label": "Filter",
       "from": "From",
       "to": "To"
     },

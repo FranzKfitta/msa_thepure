@@ -3,20 +3,20 @@
   <a href="{{ product.url }}" class="product-card__link">
     <div class="product-card__image-wrapper">
       {% if product.featured_media %}
-         <img
-            src="{{ product.featured_media | image_url: width: 400 }}"
-            srcset="
-              {{ product.featured_media | image_url: width: 200 }} 200w,
-              {{ product.featured_media | image_url: width: 400 }} 400w,
-              {{ product.featured_media | image_url: width: 600 }} 600w
-            "
-            sizes="(min-width: 990px) 14vw, (min-width: 750px) 50vw, 50vw"
-            alt="{{ product.featured_media.alt | escape }}"
-            loading="lazy"
-            width="400"
-            height="533"
-            class="product-card__image"
-         >
+        <img
+           src="{{ product.featured_media | image_url: width: 400 }}"
+           srcset="
+             {{ product.featured_media | image_url: width: 200 }} 200w,
+             {{ product.featured_media | image_url: width: 400 }} 400w,
+             {{ product.featured_media | image_url: width: 600 }} 600w
+           "
+           sizes="(min-width: 990px) 14vw, (min-width: 750px) 50vw, 50vw"
+           alt="{{ product.featured_media.alt | escape }}"
+           loading="lazy"
+           width="400"
+           height="400"
+           class="product-card__image"
+        >
       {% else %}
         {{ 'product-1' | placeholder_svg_tag: 'product-card__image placeholder-svg' }}
       {% endif %}

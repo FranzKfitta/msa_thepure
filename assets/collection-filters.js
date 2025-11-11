@@ -8,6 +8,40 @@ class FacetFiltersForm extends HTMLElement {
     }, 500);
 
     this.form.addEventListener('input', this.debouncedOnSubmit.bind(this));
+
+    // Mobile filter toggle
+    this.setupMobileFilterToggle();
+  }
+
+  setupMobileFilterToggle() {
+    const filterToggle = document.querySelector('.collection__filter-toggle');
+    const facetsWrapper = document.querySelector('.facets-wrapper');
+
+    if (!filterToggle || !facetsWrapper) return;
+
+    // Show/hide filter drawer on mobile
+    filterToggle.addEventListener('click', () => {
+      facetsWrapper.classList.toggle('active');
+      document.body.style.overflow = facetsWrapper.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close filter drawer when clicking outside
+    document.addEventListener('click', (e) => {
+      if (facetsWrapper.classList.contains('active') && 
+          !facetsWrapper.contains(e.target) && 
+          !filterToggle.contains(e.target)) {
+        facetsWrapper.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close filter drawer when applying filters
+    this.form.addEventListener('input', () => {
+      if (window.innerWidth < 600) {
+        facetsWrapper.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
   onSubmitHandler(event) {
