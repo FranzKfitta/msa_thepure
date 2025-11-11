@@ -298,6 +298,12 @@ label {
   .product-grid--2-col-mobile {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* List view toggle - 1 column on mobile */
+  .product-grid--list-view {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem 0;
+  }
 }
 
 /* ==========================================================================
