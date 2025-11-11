@@ -1,6 +1,6 @@
 .newsletter { 
   padding: 6rem 0; 
-  background-color: #fafafa; 
+  background-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.04); 
 }
 
 @media screen and (max-width: 599px) {
@@ -44,7 +44,7 @@
 .newsletter__subheading { 
   margin-bottom: 2.5rem; 
   font-weight: 300; 
-  color: var(--color-secondary, #666666); 
+  color: rgba(var(--color-text-rgb, 0, 0, 0), 0.6); 
 }
 
 @media screen and (max-width: 599px) {

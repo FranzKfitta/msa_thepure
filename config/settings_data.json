@@ -1,7 +1,7 @@
 {
   "current": {
     "color_primary": "#000000",
-    "color_secondary": "#666666",
+    "color_accent": "#FF6B35",
     "color_text": "#000000",
     "color_background": "#FFFFFF",
     "color_border": "#E0E0E0",
@@ -71,7 +71,7 @@
   "presets": {
     "Default": {
       "color_primary": "#000000",
-      "color_secondary": "#666666",
+      "color_accent": "#FF6B35",
       "color_text": "#000000",
       "color_background": "#FFFFFF",
       "cart_type": "drawer"

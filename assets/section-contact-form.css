@@ -37,7 +37,7 @@
   overflow: hidden;
   border-radius: 8px;
   aspect-ratio: 1 / 1;
-  background-color: #f5f5f5;
+  background-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +149,7 @@
   outline: none;
   border-color: var(--color-text, #000000);
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
-  background-color: #fafafa;
+  background-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.04);
 }
 
 .contact-form__textarea {
