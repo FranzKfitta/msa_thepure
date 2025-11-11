@@ -29,7 +29,7 @@ class CartManager {
       this.cart = await response.json();
       return this.cart;
     } catch (error) {
-      console.error('Error fetching cart:', error);
+      // Handle cart fetch error
     }
   }
 
@@ -47,7 +47,7 @@ class CartManager {
         return await response.json();
       }
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      // Handle add to cart error
     }
   }
 
@@ -64,7 +64,7 @@ class CartManager {
         return await response.json();
       }
     } catch (error) {
-      console.error('Error updating cart:', error);
+      // Handle update cart error
     }
   }
 

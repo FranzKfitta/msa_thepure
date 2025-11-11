@@ -160,7 +160,6 @@ class ContactFormHandler {
         this.showError();
       }
     } catch (error) {
-      console.error('Form submission error:', error);
       // If AJAX fails, fall back to regular form submission
       this.form.submit();
     } finally {
