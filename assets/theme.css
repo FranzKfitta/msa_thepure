@@ -229,6 +229,8 @@ label {
   padding: 0;
   list-style: none;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Desktop column classes - only apply at 990px and above */
@@ -288,7 +290,7 @@ label {
   .product-grid--5-col-desktop,
   .product-grid--6-col-desktop,
   .product-grid--7-col-desktop {
-    gap: 1.25rem 1rem;
+    gap: 1.25rem 0.75rem;
   }
 
   .product-grid--1-col-mobile {
@@ -404,7 +406,7 @@ label {
   }
 
   .product-grid {
-    gap: 1rem 0.75rem;
+    gap: 1.25rem 0.75rem;
   }
 }
 
