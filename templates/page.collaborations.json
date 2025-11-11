@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "collaborations-hero",
+      "settings": {
+        "heading": "SAKINA M'SA X APC",
+        "subheading": "Exclusive collaboration available for Pre-Order",
+        "announcement": "Limited Pre-Order Available Now",
+        "discount_code": "PREORDER15",
+        "discount_text": "Use code PREORDER15 for 15% off pre-orders",
+        "valid_until": "Valid until December 31, 2024",
+        "button_text": "Pre-Order Available",
+        "button_link": "/collections/sakina-msa-x-apc",
+        "height": "medium",
+        "text_alignment": "center",
+        "overlay_opacity": 20
+      }
+    },
+    "main": {
+      "type": "collaborations",
+      "settings": {
+        "kicker": "COLLABORATION",
+        "heading": "WHEN HERITAGE MEETS THE AVANT-GARDE",
+        "intro": "<p>A groundbreaking collaboration between Sakina M'SA and APC brings together two visionary approaches to contemporary fashion. This limited edition collection represents the fusion of traditional craftsmanship with modern design sensibilities.</p><p>Each piece tells a story of cultural dialogue, where Sakina M'SA's innovative textile techniques meet APC's minimalist aesthetic. The result is a collection that challenges conventions while respecting the rich heritage of both houses.</p>",
+        "community_text": "<p>The fashion community has been buzzing with excitement since the announcement. Social media has been flooded with anticipation for this unique collaboration, with style influencers and fashion critics alike praising the bold vision and impeccable execution.</p>",
+        "cta_text": "Discover the Sakina M'SA x APC Collection now",
+        "cta_link": "/collections/sakina-msa-x-apc"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Stay Updated",
+        "subheading": "Be the first to know about new releases and exclusive offers"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "newsletter"
+  ]
+}

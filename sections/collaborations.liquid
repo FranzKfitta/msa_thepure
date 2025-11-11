@@ -1,0 +1,182 @@
+{{ 'section-collaborations.css' | asset_url | stylesheet_tag }}
+
+<section class="collaborations section-padding" id="section-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.kicker != blank or section.settings.heading != blank or section.settings.intro != blank %}
+      <header class="collaborations__header">
+        {% if section.settings.kicker != blank %}
+          <p class="collaborations__label">{{ section.settings.kicker | escape }}</p>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h1 class="collaborations__title">{{ section.settings.heading | escape }}</h1>
+        {% else %}
+          <h1 class="visually-hidden">{{ page.title | escape }}</h1>
+        {% endif %}
+
+        {% if section.settings.intro != blank %}
+          <div class="collaborations__intro rte">
+            {{ section.settings.intro }}
+          </div>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="collaborations__blocks">
+        {% for block in section.blocks %}
+          <div class="collaborations__block" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              <div class="collaborations__block-image">
+                <img
+                  src="{{ block.settings.image | image_url: width: 1200 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 600 }} 600w,
+                    {{ block.settings.image | image_url: width: 800 }} 800w,
+                    {{ block.settings.image | image_url: width: 1000 }} 1000w,
+                    {{ block.settings.image | image_url: width: 1200 }} 1200w
+                  "
+                  sizes="(min-width: 990px) 800px, 100vw"
+                  alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </div>
+            {% endif %}
+            
+            <div class="collaborations__block-content">
+              {% if block.settings.heading != blank %}
+                <h2 class="collaborations__block-title">{{ block.settings.heading | escape }}</h2>
+              {% endif %}
+              
+              {% if block.settings.description != blank %}
+                <div class="collaborations__block-description rte">
+                  {{ block.settings.description }}
+                </div>
+              {% endif %}
+              
+              {% if block.settings.caption != blank %}
+                <div class="collaborations__block-caption rte">
+                  {{ block.settings.caption }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.community_text != blank %}
+      <div class="collaborations__community rte">
+        {{ section.settings.community_text }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+      <div class="collaborations__cta">
+        <a href="{{ section.settings.cta_link }}" class="button button--primary button--large">
+          {{ section.settings.cta_text | escape }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collaborations page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Section label",
+      "default": "COLLABORATION"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main heading",
+      "default": "WHEN HERITAGE MEETS THE AVANT-GARDE"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction text",
+      "default": "<p>A groundbreaking collaboration between Sakina M'SA and APC brings together two visionary approaches to contemporary fashion.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "community_text",
+      "label": "Community text",
+      "default": "<p>The fashion community has been buzzing with excitement since the announcement.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Discover the Sakina M'SA x APC Collection now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA button link",
+      "default": "/collections/sakina-msa-x-apc"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_feature",
+      "name": "Product feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Block heading",
+          "default": "THE BOMBERS – THE ICONIC SUBLIMATED"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Featuring intricate embroidery and innovative textile techniques, these bomber jackets represent the pinnacle of collaborative design.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "caption",
+          "label": "Image caption",
+          "default": "<p>Detail view showcasing the meticulous embroidery work and premium materials.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collaborations page",
+      "blocks": [
+        {
+          "type": "product_feature",
+          "settings": {
+            "heading": "THE BOMBERS – THE ICONIC SUBLIMATED",
+            "description": "<p>Featuring intricate embroidery and innovative textile techniques, these bomber jackets represent the pinnacle of collaborative design. Each piece showcases Sakina M'SA's signature sublimation techniques combined with APC's architectural approach to garment construction.</p>",
+            "caption": "<p>Detail view showcasing the meticulous embroidery work and premium materials used in the bomber jacket collection.</p>"
+          }
+        },
+        {
+          "type": "product_feature",
+          "settings": {
+            "heading": "THE VARSITY JACKET – HERITAGE REVISITED",
+            "description": "<p>A contemporary interpretation of the classic varsity jacket, this piece brings together traditional American sportswear aesthetics with European avant-garde sensibilities. The construction features premium wool blend body with leather sleeves, reimagined through both designers' unique perspectives.</p>",
+            "caption": "<p>The varsity jacket demonstrates exceptional attention to detail with custom embroidery and premium textile selection.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
