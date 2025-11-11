@@ -320,6 +320,8 @@
     font-size: 0.8rem;
     overflow-x: auto;
     display: block;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .page-content.rte th,

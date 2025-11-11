@@ -27,6 +27,7 @@ body {
   background-color: var(--color-background, #ffffff);
   line-height: 1.8;
   letter-spacing: 0.01em;
+  overflow-x: hidden;
 }
 
 /* ==========================================================================

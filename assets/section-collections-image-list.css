@@ -16,6 +16,19 @@
 
 .collections-image-list.section-template--24919193059657__collections_image_list-padding .page-width {
   max-width: none;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .collections-image-list.section-template--24919193059657__collections_image_list-padding .page-width {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .collections-image-list.section-template--24919193059657__collections_image_list-padding .page-width {
+    padding: 0 2.5rem;
+  }
 }
 
 .collections-image-list .section-header {
