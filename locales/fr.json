@@ -46,6 +46,9 @@
     "language": {
       "label": "Langue",
       "submit": "Mettre à jour la langue"
+    },
+    "nav": {
+      "label": "Navigation"
     }
   },
   "newsletter": {

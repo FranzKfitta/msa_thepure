@@ -166,7 +166,9 @@
 }
 
 .header__menu-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 0;
   font-weight: 400;
   font-size: 0.8125rem;
@@ -180,7 +182,15 @@
   position: relative;
 }
 
-.header__menu-link::after {
+.header__menu-indicator {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+.header__menu-link::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -191,8 +201,8 @@
   transition: width 0.3s ease;
 }
 
-.header__menu-link:hover::after,
-.header__menu-link[aria-current="page"]::after {
+.header__menu-link:hover::before,
+.header__menu-link[aria-current="page"]::before {
   width: 100%;
 }
 
@@ -205,6 +215,108 @@
   outline-offset: 4px;
 }
 
+.header__mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 350px;
+  margin: 0.5rem 0 0 0;
+  padding: 1.5rem;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #E0E0E0);
+  border-radius: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.header__menu-item:hover .header__mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__mega-menu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__mega-menu-item {
+  min-width: 0;
+}
+
+.header__mega-menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.header__mega-menu-title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--color-text, #000000);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.header__mega-menu-title:hover {
+  opacity: 0.7;
+}
+
+.header__mega-menu-title:focus-visible {
+  outline: 2px solid var(--color-text, #000000);
+  outline-offset: 2px;
+}
+
+.header__mega-menu-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header__mega-menu-subitem {
+  line-height: 1.4;
+}
+
+.header__mega-menu-link,
+.header__mega-menu-sublink {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text, #000000);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+.header__mega-menu-link:hover,
+.header__mega-menu-sublink:hover {
+  opacity: 0.7;
+}
+
+.header__mega-menu-link:focus-visible,
+.header__mega-menu-sublink:focus-visible {
+  outline: 2px solid var(--color-text, #000000);
+  outline-offset: 2px;
+}
+
+/* Legacy submenu support for simple dropdowns */
 .header__submenu {
   position: absolute;
   top: 100%;
@@ -309,6 +421,7 @@
   border-radius: 50%;
 }
 
+/* Mobile Menu Styles */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -383,6 +496,10 @@
   position: relative;
 }
 
+.mobile-menu__item--has-children .mobile-menu__link {
+  padding-right: 3rem;
+}
+
 .mobile-menu__link {
   display: block;
   padding: 1rem 1.5rem;
@@ -427,6 +544,11 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.mobile-menu__expand:focus-visible {
+  outline: 2px solid var(--color-text, #000000);
+  outline-offset: 2px;
+}
+
 .mobile-menu__expand[aria-expanded="true"] {
   transform: translateY(-50%) rotate(180deg);
 }
@@ -435,15 +557,24 @@
   display: none;
   list-style: none;
   background-color: rgba(0, 0, 0, 0.02);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .mobile-menu__submenu.is-open {
   display: block;
+  max-height: 10000px;
 }
 
 .mobile-menu__submenu-item {
   border-left: 2px solid var(--color-border, #E0E0E0);
   margin-left: 1.5rem;
+  position: relative;
+}
+
+.mobile-menu__submenu-item.mobile-menu__item--has-children .mobile-menu__submenu-link {
+  padding-right: 3rem;
 }
 
 .mobile-menu__submenu-link {
@@ -558,8 +689,8 @@
     margin-left: auto;
   }
   
-  .header__submenu {
-    min-width: 250px;
+  .header__mega-menu {
+    min-width: 400px;
   }
 }
 
@@ -669,7 +800,7 @@ body {
 
 /* Menu item hover state adjustments for wrapped items */
 @media screen and (min-width: 1024px) {
-  .header__menu-item:hover .header__submenu {
+  .header__menu-item:hover .header__mega-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);

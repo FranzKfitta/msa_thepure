@@ -13,8 +13,8 @@
 
 <header class="header{% if header_transparent %} header--transparent{% endif %}{% if section.settings.enable_sticky_header %} header--sticky{% endif %}" data-header>
   <div class="header__wrapper page-width">
-    <nav class="header__nav">
-      <button type="button" class="header__menu-toggle" aria-controls="mobile-menu" aria-expanded="false" data-menu-toggle>
+    <nav class="header__nav" aria-label="{{ 'general.nav.label' | t }}">
+      <button type="button" class="header__menu-toggle" aria-controls="mobile-menu" aria-expanded="false" data-menu-toggle aria-label="{{ 'general.accessibility.menu' | t }}">
         {% render 'icon-hamburger' %}
         <span class="visually-hidden">{{ 'general.accessibility.menu' | t }}</span>
       </button>
@@ -39,19 +39,14 @@
       <ul class="header__menu-list" role="list">
         {% for link in section.settings.menu.links %}
           <li class="header__menu-item{% if link.links != blank %} header__menu-item--has-dropdown{% endif %}">
-            <a href="{{ link.url }}" class="header__menu-link" {% if link.current %} aria-current="page"{% endif %}>
+            <a href="{{ link.url }}" class="header__menu-link" {% if link.current %} aria-current="page"{% endif %} data-menu-trigger>
               {{ link.title | escape }}
+              {% if link.links != blank %}<span class="header__menu-indicator" aria-hidden="true"></span>{% endif %}
             </a>
             {% if link.links != blank %}
-              <ul class="header__submenu" role="list">
-                {% for child_link in link.links %}
-                  <li class="header__submenu-item">
-                    <a href="{{ child_link.url }}" class="header__submenu-link" {% if child_link.current %} aria-current="page"{% endif %}>
-                      {{ child_link.title | escape }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
+              <div class="header__mega-menu" data-mega-menu>
+                {% include 'header-mega-menu' with link: link, level: 1 %}
+              </div>
             {% endif %}
           </li>
         {% endfor %}
@@ -76,7 +71,7 @@
     </nav>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu role="navigation" aria-label="{{ 'general.nav.label' | t }}">
     <div class="mobile-menu__header">
       <button type="button" class="mobile-menu__close" aria-label="{{ 'general.accessibility.close' | t }}" data-menu-close>
         {% render 'icon-close' %}
@@ -90,25 +85,7 @@
 
       <ul class="mobile-menu__list" role="list">
         {% for link in section.settings.menu.links %}
-          <li class="mobile-menu__item">
-            <a href="{{ link.url }}" class="mobile-menu__link" {% if link.current %} aria-current="page"{% endif %}>
-              {{ link.title | escape }}
-            </a>
-            {% if link.links != blank %}
-              <button type="button" class="mobile-menu__expand" aria-expanded="false" aria-label="{{ 'general.accessibility.expand_submenu' | t }}">
-                {% render 'icon-chevron' %}
-              </button>
-              <ul class="mobile-menu__submenu" role="list">
-                {% for child_link in link.links %}
-                  <li class="mobile-menu__submenu-item">
-                    <a href="{{ child_link.url }}" class="mobile-menu__submenu-link">
-                      {{ child_link.title | escape }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </li>
+          {% include 'header-mobile-menu-item' with link: link, level: 0 %}
         {% endfor %}
       </ul>
     </nav>

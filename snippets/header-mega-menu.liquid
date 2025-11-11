@@ -1,0 +1,31 @@
+{%- comment -%}
+  Mega-menu component for desktop navigation with support for nested menu items
+  Displays as multi-column layout on desktop
+{%- endcomment -%}
+
+<ul class="header__mega-menu-list" role="list">
+  {%- for child_link in link.links -%}
+    <li class="header__mega-menu-item">
+      {%- if child_link.links != blank -%}
+        <div class="header__mega-menu-section">
+          <a href="{{ child_link.url }}" class="header__mega-menu-title" {% if child_link.current %}aria-current="page"{% endif %}>
+            {{ child_link.title | escape }}
+          </a>
+          <ul class="header__mega-menu-sublist" role="list">
+            {%- for grandchild_link in child_link.links -%}
+              <li class="header__mega-menu-subitem">
+                <a href="{{ grandchild_link.url }}" class="header__mega-menu-sublink" {% if grandchild_link.current %}aria-current="page"{% endif %}>
+                  {{ grandchild_link.title | escape }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- else -%}
+        <a href="{{ child_link.url }}" class="header__mega-menu-link" {% if child_link.current %}aria-current="page"{% endif %}>
+          {{ child_link.title | escape }}
+        </a>
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+</ul>

@@ -1,0 +1,28 @@
+{%- comment -%}
+  Mobile menu item component with support for nested menu items using accordion pattern
+  Recursively handles multiple levels of nesting
+{%- endcomment -%}
+
+<li class="mobile-menu__item{% if link.links != blank %} mobile-menu__item--has-children{% endif %}">
+  <a href="{{ link.url }}" class="mobile-menu__link" {% if link.current %}aria-current="page"{% endif %}>
+    {{ link.title | escape }}
+  </a>
+  
+  {%- if link.links != blank -%}
+    <button 
+      type="button" 
+      class="mobile-menu__expand" 
+      aria-expanded="false" 
+      aria-label="{{ 'general.accessibility.expand_submenu' | t }} {{ link.title | escape }}"
+      data-expand-button
+    >
+      {% render 'icon-chevron' %}
+    </button>
+    
+    <ul class="mobile-menu__submenu" role="list" data-submenu>
+      {%- for child_link in link.links -%}
+        {% include 'header-mobile-menu-item' with link: child_link, level: level | plus: 1 %}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</li>
