@@ -16,6 +16,19 @@
 
 .product-carousel .page-width {
   max-width: none;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .product-carousel .page-width {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .product-carousel .page-width {
+    padding: 0 2.5rem;
+  }
 }
 
 .section-header {

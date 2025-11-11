@@ -16,6 +16,19 @@
 
 .image-with-text .page-width {
   max-width: none;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .image-with-text .page-width {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .image-with-text .page-width {
+    padding: 0 2.5rem;
+  }
 }
 
 .image-with-text__grid {
