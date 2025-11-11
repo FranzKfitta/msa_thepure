@@ -46,6 +46,9 @@
     "language": {
       "label": "Language",
       "submit": "Update language"
+    },
+    "nav": {
+      "label": "Navigation"
     }
   },
   "newsletter": {
