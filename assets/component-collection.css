@@ -1,10 +1,12 @@
 .collection { 
   padding: 2rem 0 4rem 0; 
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 599px) {
   .collection { 
     padding: 0;
+    overflow-x: hidden;
   }
 }
 
