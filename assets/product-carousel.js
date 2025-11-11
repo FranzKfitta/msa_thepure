@@ -133,7 +133,6 @@ class ProductCarousel extends HTMLElement {
 
       document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
     } catch (error) {
-      console.error('Error adding to cart:', error);
       button.innerHTML = originalHTML;
       button.disabled = false;
     }

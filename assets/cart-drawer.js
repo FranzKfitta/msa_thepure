@@ -58,7 +58,7 @@ class CartDrawer extends HTMLElement {
       await window.cartManager.addItem(id, quantity);
       await this.renderContents();
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      // Handle error adding to cart
     } finally {
       button.disabled = false;
     }

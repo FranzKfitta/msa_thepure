@@ -20,7 +20,7 @@ if (!customElements.get('product-form')) {
         quantity: formData.get('quantity') || 1
       });
 
-      fetch(`${routes.cart_add_url}`, config)
+      fetch('/cart/add.js', config)
         .then((response) => response.json())
         .then((response) => {
           if (response.status) {
@@ -30,8 +30,8 @@ if (!customElements.get('product-form')) {
           window.cartManager.getCart();
           window.cartManager.showCartDrawer();
         })
-        .catch((e) => {
-          console.error(e);
+        .catch(() => {
+          // Handle error silently
         })
         .finally(() => {
           submitButton.classList.remove('loading');
@@ -39,8 +39,8 @@ if (!customElements.get('product-form')) {
         });
     }
 
-    handleErrorMessage(errorMessage = false) {
-      console.error(errorMessage);
+    handleErrorMessage() {
+      // Handle error message display
     }
   });
 }

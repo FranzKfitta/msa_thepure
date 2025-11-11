@@ -5,6 +5,7 @@
     "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "color-hex-length": "long",
     "declaration-no-important": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "media-feature-range-notation": "legacy"
   }
 }
