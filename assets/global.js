@@ -4,14 +4,6 @@
  */
 
 // Utility functions
-const debounce = (fn, wait) => {
-  let t;
-  return (...args) => {
-    clearTimeout(t);
-    t = setTimeout(() => fn.apply(this, args), wait);
-  };
-};
-
 const fetchConfig = (type = 'json') => {
   return {
     method: 'POST',
@@ -213,5 +205,5 @@ customElements.define('variant-selects', VariantSelects);
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Ishmail Apparel theme loaded');
+  // Theme initialized
 });

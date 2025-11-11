@@ -79,7 +79,6 @@ class HeroVideoManager {
   }
 
   handleVideoError(video) {
-    console.warn('Hero video failed to load. Poster image will be displayed.');
     video.parentElement?.classList.add('hero--video-error');
     video.parentElement?.classList.remove('hero--loading');
   }
