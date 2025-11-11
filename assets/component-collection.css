@@ -36,7 +36,7 @@
     color: #000000;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 1.875rem 1.25rem;
+    padding: 1.25rem 0.75rem;
   }
 }
 
@@ -247,7 +247,7 @@
   }
 
   .collection__controls-bar {
-    padding: 0.625rem 1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .facets-wrapper {
@@ -594,7 +594,7 @@
 
 @media screen and (max-width: 599px) {
   .collection__products {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     margin-top: 0;
   }
 }
