@@ -2,14 +2,42 @@
 <script src="{{ 'collection-filters.js' | asset_url }}" defer="defer"></script>
 
 <div class="collection" data-section-id="{{ section.id }}">
-  <div class="page-width">
-    <h1 class="collection__title">{{ collection.title | escape }}</h1>
+  <h1 class="collection__title">{{ collection.title | escape }}</h1>
 
+  <div class="collection__controls-bar">
+    <button class="collection__filter-toggle" aria-label="Toggle filters" data-filter-toggle>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
+      </svg>
+      <span class="collection__filter-label">{{ 'products.facets.filter_label' | t }}</span>
+    </button>
+    <div class="collection__view-toggle" data-view-toggle>
+      <button class="collection__view-toggle-btn" data-view-mode="list" aria-label="List view" title="List view">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <line x1="8" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2"/>
+          <circle cx="3" cy="6" r="1.5" fill="currentColor"/>
+          <circle cx="3" cy="12" r="1.5" fill="currentColor"/>
+          <circle cx="3" cy="18" r="1.5" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="collection__view-toggle-btn active" data-view-mode="grid" aria-label="Grid view" title="Grid view">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <rect x="3" y="3" width="7" height="7" fill="currentColor"/>
+          <rect x="14" y="3" width="7" height="7" fill="currentColor"/>
+          <rect x="3" y="14" width="7" height="7" fill="currentColor"/>
+          <rect x="14" y="14" width="7" height="7" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="page-width">
     {% if section.settings.enable_filtering %}
       <div class="collection__filters-section">
-        <button class="collection__filter-toggle" aria-label="Toggle filters">
-          <span class="collection__filter-label">{{ 'products.facets.filter_label' | t: count: collection.filters.size }}</span>
-        </button>
         <facet-filters-form class="facets-wrapper">
           <form id="FacetFiltersForm" class="facets">
             {% for filter in collection.filters %}
@@ -76,8 +104,8 @@
 
             {% if collection.filters != empty %}
               <div class="facets__actions">
-                <button type="button" class="facets__clear" onclick="window.location.href='{{ collection.url }}';">
-                  {{ 'products.facets.clear_all' | t }}
+                <button type="submit" class="facets__apply-btn">
+                  See {{ collection.products_count }} items
                 </button>
               </div>
             {% endif %}

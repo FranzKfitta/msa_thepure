@@ -14,7 +14,7 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   setupMobileFilterToggle() {
-    const filterToggle = document.querySelector('.collection__filter-toggle');
+    const filterToggle = document.querySelector('[data-filter-toggle]');
     const facetsWrapper = document.querySelector('.facets-wrapper');
 
     if (!filterToggle || !facetsWrapper) return;
@@ -53,6 +53,43 @@ class FacetFiltersForm extends HTMLElement {
 }
 
 customElements.define('facet-filters-form', FacetFiltersForm);
+
+// Collection view toggle
+function updateViewMode(productGrid, mode) {
+  const buttons = document.querySelectorAll('[data-view-mode]');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.viewMode === mode);
+  });
+  
+  if (mode === 'list') {
+    productGrid.classList.add('product-grid--list-view');
+  } else {
+    productGrid.classList.remove('product-grid--list-view');
+  }
+}
+
+function setupViewToggle() {
+  const viewToggle = document.querySelector('[data-view-toggle]');
+  const productGrid = document.querySelector('.product-grid');
+  
+  if (viewToggle && productGrid) {
+    const viewButtons = viewToggle.querySelectorAll('[data-view-mode]');
+    
+    // Load saved view mode from localStorage
+    const savedViewMode = localStorage.getItem('collection-view-mode') || 'grid';
+    updateViewMode(productGrid, savedViewMode);
+    
+    viewButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const viewMode = button.dataset.viewMode;
+        updateViewMode(productGrid, viewMode);
+        localStorage.setItem('collection-view-mode', viewMode);
+      });
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', setupViewToggle);
 
 // Collection sorting
 document.addEventListener('DOMContentLoaded', () => {
