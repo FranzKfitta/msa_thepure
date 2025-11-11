@@ -1,0 +1,306 @@
+/* Collaborations Section
+   ========================================================================== */
+
+.collaborations {
+  position: relative;
+  background-color: #ffffff;
+}
+
+.collaborations .page-width {
+  max-width: 1200px;
+}
+
+/* Header
+   ========================================================================== */
+
+.collaborations__header {
+  max-width: 900px;
+  margin: 0 auto 6rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__header {
+    margin: 0 auto 3rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .collaborations__header {
+    margin: 0 auto 4rem;
+  }
+}
+
+.collaborations__label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-secondary, #666666);
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__label {
+    margin-bottom: 1rem;
+  }
+}
+
+.collaborations__title {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .collaborations__title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.collaborations__intro {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--color-text, #000000);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__intro {
+    font-size: 0.95rem;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .collaborations__intro {
+    font-size: 1rem;
+  }
+}
+
+/* Blocks Container
+   ========================================================================== */
+
+.collaborations__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  margin-bottom: 8rem;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__blocks {
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .collaborations__blocks {
+    gap: 6rem;
+    margin-bottom: 6rem;
+  }
+}
+
+/* Individual Block
+   ========================================================================== */
+
+.collaborations__block {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.collaborations__block-image {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+}
+
+.collaborations__block-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collaborations__block:hover .collaborations__block-image img {
+  transform: scale(1.03);
+}
+
+.collaborations__block-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.collaborations__block-title {
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--color-text, #000000);
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__block-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 989px) {
+  .collaborations__block-title {
+    font-size: 1.75rem;
+  }
+}
+
+.collaborations__block-description {
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: var(--color-text, #000000);
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__block-description {
+    font-size: 0.9375rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.collaborations__block-caption {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--color-secondary, #666666);
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__block-caption {
+    font-size: 0.875rem;
+  }
+}
+
+/* Community Section
+   ========================================================================== */
+
+.collaborations__community {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--color-text, #000000);
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__community {
+    font-size: 0.95rem;
+    margin: 0 auto 3rem;
+  }
+}
+
+/* CTA Section
+   ========================================================================== */
+
+.collaborations__cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+@media screen and (max-width: 599px) {
+  .collaborations__cta {
+    margin-top: 3rem;
+  }
+}
+
+.button--large {
+  font-size: 1.125rem;
+  padding: 1rem 2.5rem;
+}
+
+@media screen and (max-width: 599px) {
+  .button--large {
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+  }
+}
+
+/* Rich Text Content Styles
+   ========================================================================== */
+
+.collaborations .rte p {
+  margin-bottom: 1.5rem;
+}
+
+.collaborations .rte p:last-child {
+  margin-bottom: 0;
+}
+
+.collaborations .rte strong {
+  font-weight: 500;
+}
+
+.collaborations .rte em {
+  font-style: italic;
+}
+
+.collaborations .rte a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.collaborations .rte a:hover {
+  opacity: 0.6;
+}
+
+/* Responsive text alignment
+   ========================================================================== */
+
+@media screen and (max-width: 749px) {
+  .collaborations__header {
+    text-align: left;
+  }
+  
+  .collaborations__block {
+    text-align: left;
+  }
+  
+  .collaborations__community {
+    text-align: left;
+  }
+}
+
+/* Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .collaborations__block-image img {
+    transition: none;
+  }
+
+  .collaborations__block:hover .collaborations__block-image img {
+    transform: none;
+  }
+}

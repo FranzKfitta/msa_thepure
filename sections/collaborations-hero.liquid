@@ -1,0 +1,150 @@
+{{ 'section-collaborations-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="collaborations-hero hero--{{ section.settings.height }}" {% if section.settings.image %}style="background-image: url({{ section.settings.image | image_url: width: 1920 }});"{% endif %}>
+  <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+  
+  <div class="hero__content hero__text--{{ section.settings.text_alignment }}">
+    {% if section.settings.announcement %}
+      <div class="collaborations-hero__announcement">
+        {{ section.settings.announcement | escape }}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.heading %}
+      <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+    {% endif %}
+    
+    {% if section.settings.subheading %}
+      <p class="hero__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+    
+    {% if section.settings.discount_text %}
+      <div class="collaborations-hero__discount">
+        <div class="collaborations-hero__discount-text">
+          {{ section.settings.discount_text | escape }}
+        </div>
+        {% if section.settings.valid_until %}
+          <div class="collaborations-hero__discount-valid">
+            {{ section.settings.valid_until | escape }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.button_text and section.settings.button_link %}
+      <a href="{{ section.settings.button_link }}" class="button button--primary button--large">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collaborations Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "announcement",
+      "label": "Announcement text",
+      "default": "Limited Pre-Order Available Now"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "SAKINA M'SA X APC",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Exclusive collaboration available for Pre-Order"
+    },
+    {
+      "type": "text",
+      "id": "discount_text",
+      "label": "Discount text",
+      "default": "Use code PREORDER15 for 15% off pre-orders"
+    },
+    {
+      "type": "text",
+      "id": "valid_until",
+      "label": "Valid until text",
+      "default": "Valid until December 31, 2024"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Pre-Order Available"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "default": "/collections/sakina-msa-x-apc"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Section height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 20,
+      "label": "Overlay opacity"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collaborations Hero"
+    }
+  ]
+}
+{% endschema %}
