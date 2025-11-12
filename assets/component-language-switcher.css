@@ -11,7 +11,7 @@
 .language-switcher__toggle {
   appearance: none;
   background-color: transparent;
-  border: 1px solid var(--color-border, #E0E0E0);
+  border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: var(--border-radius, 4px);
   padding: 0.5rem 0.75rem;
   display: inline-flex;
@@ -77,7 +77,7 @@
   padding: 0.25rem 0;
   list-style: none;
   background-color: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #E0E0E0);
+  border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: var(--border-radius, 4px);
   box-shadow: none;
 }

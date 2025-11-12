@@ -2,7 +2,7 @@
   position: relative;
   z-index: 999;
   background-color: var(--color-background, #ffffff);
-  border-bottom: 1px solid var(--color-border, #E0E0E0);
+  border-bottom: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   transition: all 0.3s ease;
 }
 
@@ -10,7 +10,7 @@
 @media screen and (max-width: 599px) {
   .header {
     background-color: #ffffff;
-    border-bottom-color: #E0E0E0;
+    border-bottom-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.12);
   }
 
   .header__menu-toggle svg,
@@ -223,7 +223,7 @@
   margin: 0.5rem 0 0 0;
   padding: 1.5rem;
   background-color: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #E0E0E0);
+  border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: 0;
   opacity: 0;
   visibility: hidden;
@@ -326,7 +326,7 @@
   padding: 1rem 0;
   list-style: none;
   background-color: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #E0E0E0);
+  border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: 0;
   opacity: 0;
   visibility: hidden;
@@ -568,7 +568,7 @@
 }
 
 .mobile-menu__submenu-item {
-  border-left: 2px solid var(--color-border, #E0E0E0);
+  border-left: 2px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   margin-left: 1.5rem;
   position: relative;
 }

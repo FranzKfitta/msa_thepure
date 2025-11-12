@@ -22,9 +22,10 @@
       },
       {
         "type": "color",
-        "id": "color_secondary",
-        "label": "Secondary color",
-        "default": "#666666"
+        "id": "color_accent",
+        "label": "Accent color (Chiromani Orange)",
+        "info": "Used for highlights, CTAs, and interactive elements",
+        "default": "#FF6B35"
       },
       {
         "type": "color",

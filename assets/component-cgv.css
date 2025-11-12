@@ -168,23 +168,23 @@
 .page-content.rte td {
   padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 1px solid var(--color-border, #E0E0E0);
+  border-bottom: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
 }
 
 .page-content.rte th {
-  background-color: #f5f5f5;
+  background-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.05);
   font-weight: 600;
 }
 
 .page-content.rte tr:hover {
-  background-color: #fafafa;
+  background-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.04);
 }
 
 /* Horizontal rule */
 .page-content.rte hr {
   margin: 2.5rem 0;
   border: none;
-  border-top: 1px solid var(--color-border, #E0E0E0);
+  border-top: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
 }
 
 /* Image styling */

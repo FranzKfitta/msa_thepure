@@ -142,7 +142,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-border, #e0e0e0);
+  background: var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
 }
 
 @media screen and (max-width: 749px) {
