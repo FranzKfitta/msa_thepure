@@ -36,17 +36,17 @@
 }
 
 .language-switcher__toggle:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-color: var(--color-text, #000000);
+  background-color: rgba(197, 81, 33, 0.05);
+  border-color: var(--color-accent, #c55121);
 }
 
 .language-switcher__toggle:focus-visible {
-  outline: 2px solid var(--color-text, #000000);
+  outline: 2px solid var(--color-accent, #c55121);
   outline-offset: 2px;
 }
 
 .language-switcher--open .language-switcher__toggle {
-  border-color: var(--color-text, #000000);
+  border-color: var(--color-accent, #c55121);
 }
 
 .language-switcher__toggle-text {
@@ -128,16 +128,17 @@
 
 .language-switcher__menu-item:hover,
 .language-switcher__menu-item:focus-visible {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(197, 81, 33, 0.1);
 }
 
 .language-switcher__menu-item:focus-visible {
-  outline: 2px solid var(--color-text, #000000);
+  outline: 2px solid var(--color-accent, #c55121);
   outline-offset: -2px;
 }
 
 .language-switcher__menu-item--active {
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(197, 81, 33, 0.15);
+  color: var(--color-accent, #c55121);
   font-weight: 500;
 }
 

@@ -358,13 +358,13 @@
 
 .form-input:focus {
   outline: none;
-  border-bottom-color: var(--color-primary, #000000);
-  background-color: rgba(0, 0, 0, 0.02);
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  border-bottom-color: var(--color-accent, #c55121);
+  background-color: rgba(197, 81, 33, 0.02);
+  box-shadow: inset 0 -2px 0 rgba(197, 81, 33, 0.15);
 }
 
 .form-input:focus-visible {
-  outline: 2px solid var(--color-primary, #000000);
+  outline: 2px solid var(--color-accent, #c55121);
   outline-offset: 2px;
 }
 
@@ -390,23 +390,23 @@
   min-width: 18px;
   margin-top: 0.15rem;
   cursor: pointer;
-  accent-color: var(--color-primary, #000000);
+  accent-color: var(--color-accent, #c55121);
   border-radius: 2px;
   border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   transition: all 0.2s ease;
 }
 
 .form-checkbox:hover {
-  border-color: var(--color-primary, #000000);
+  border-color: var(--color-accent, #c55121);
 }
 
 .form-checkbox:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(197, 81, 33, 0.1);
 }
 
 .form-checkbox:focus-visible {
-  outline: 2px solid var(--color-primary, #000000);
+  outline: 2px solid var(--color-accent, #c55121);
   outline-offset: 2px;
 }
 
@@ -504,8 +504,8 @@
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  border: 1px solid var(--color-primary, #000000);
-  background-color: var(--color-primary, #000000);
+  border: 1px solid var(--color-accent, #c55121);
+  background-color: var(--color-accent, #c55121);
   color: white;
   border-radius: var(--border-radius, 0);
   cursor: pointer;
@@ -517,20 +517,20 @@
 }
 
 .button--primary {
-  background-color: var(--color-primary, #000000);
-  border-color: var(--color-primary, #000000);
+  background-color: var(--color-accent, #c55121);
+  border-color: var(--color-accent, #c55121);
   color: white;
 }
 
 .button--primary:hover {
   opacity: 0.85;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(197, 81, 33, 0.25);
 }
 
 .button--primary:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(197, 81, 33, 0.15);
 }
 
 .button--primary:focus {
@@ -538,7 +538,7 @@
 }
 
 .button--primary:focus-visible {
-  outline: 2px solid var(--color-primary, #000000);
+  outline: 2px solid var(--color-accent, #c55121);
   outline-offset: 2px;
 }
 
@@ -558,7 +558,7 @@
    ========================================================================== */
 
 .form-link {
-  color: var(--color-primary, #000000);
+  color: var(--color-accent, #c55121);
   font-size: 0.875rem;
   text-decoration: underline;
   transition: all 0.2s ease;
@@ -568,7 +568,7 @@
 }
 
 .form-link:hover {
-  opacity: 0.7;
+  opacity: 0.8;
   text-decoration-thickness: 2px;
 }
 
@@ -577,7 +577,7 @@
 }
 
 .form-link:focus-visible {
-  outline: 2px solid var(--color-primary, #000000);
+  outline: 2px solid var(--color-accent, #c55121);
   outline-offset: 2px;
   border-radius: 2px;
   padding: 0 4px;
@@ -593,15 +593,16 @@
 }
 
 .form-link--secondary {
-  color: rgba(var(--color-text-rgb, 0, 0, 0), 0.6);
+  color: var(--color-accent, #c55121);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
+  border-bottom: 1px solid var(--color-accent, #c55121);
   padding-bottom: 0.25rem;
 }
 
 .form-link--secondary:hover {
-  border-bottom-color: var(--color-primary, #000000);
-  color: var(--color-primary, #000000);
+  border-bottom-color: var(--color-accent, #c55121);
+  color: var(--color-accent, #c55121);
+  opacity: 0.8;
 }
 
 /* ==========================================================================
