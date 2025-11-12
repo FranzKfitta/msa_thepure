@@ -9,7 +9,7 @@
 /* Mobile header styling */
 @media screen and (max-width: 599px) {
   .header {
-    background-color: #ffffff;
+    background-color: var(--color-background, #f3e8e4);
     border-bottom-color: rgba(var(--color-text-rgb, 0, 0, 0), 0.12);
   }
 
@@ -222,7 +222,7 @@
   min-width: 350px;
   margin: 0.5rem 0 0 0;
   padding: 1.5rem;
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface, #f3e8e4);
   border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: 0;
   opacity: 0;
@@ -325,7 +325,7 @@
   margin: 0.5rem 0 0 0;
   padding: 1rem 0;
   list-style: none;
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface, #f3e8e4);
   border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: 0;
   opacity: 0;
@@ -428,7 +428,7 @@
   left: -100%;
   width: 280px;
   height: 100%;
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface, #f3e8e4);
   transition: left 0.3s;
   z-index: 998;
   overflow-y: auto;

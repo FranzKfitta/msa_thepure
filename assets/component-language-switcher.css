@@ -76,7 +76,7 @@
   margin: 0.5rem 0 0;
   padding: 0.25rem 0;
   list-style: none;
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface, #f3e8e4);
   border: 1px solid var(--color-border, rgba(var(--color-text-rgb, 0, 0, 0), 0.12));
   border-radius: var(--border-radius, 4px);
   box-shadow: none;

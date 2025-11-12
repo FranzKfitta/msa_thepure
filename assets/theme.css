@@ -24,7 +24,7 @@ body {
   font-family: var(--font-body, sans-serif);
   font-weight: var(--font-body-weight, 400);
   color: var(--color-text, #000000);
-  background-color: var(--color-background, #ffffff);
+  background-color: var(--color-background, #f3e8e4);
   line-height: 1.8;
   letter-spacing: 0.01em;
   overflow-x: hidden;
@@ -111,7 +111,7 @@ a:focus-visible {
 
 .button--primary {
   background-color: var(--color-text, #000000);
-  color: var(--color-background, #ffffff);
+  color: var(--color-background, #f3e8e4);
   border-color: var(--color-text, #000000);
 }
 
@@ -129,7 +129,7 @@ a:focus-visible {
 
 .button--secondary:hover {
   background-color: var(--color-text, #000000);
-  color: var(--color-background, #ffffff);
+  color: var(--color-background, #f3e8e4);
   opacity: 1;
 }
 
@@ -156,7 +156,7 @@ select {
   font-weight: var(--font-body-weight, 400);
   border: 1px solid var(--color-border, #E0E0E0);
   border-radius: var(--border-radius, 0);
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface, #f3e8e4);
   transition: border-color var(--transition-duration, 0.2s);
 }
 

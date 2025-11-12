@@ -27,7 +27,7 @@
   line-height: 1.2;
   margin: 0 0 2rem 0;
   text-align: left;
-  background-color: #ffffff;
+  background-color: var(--color-background, #f3e8e4);
   padding: 2.5rem;
   width: 100%;
   box-sizing: border-box;
@@ -38,7 +38,7 @@
     font-size: 2rem;
     text-align: left;
     margin-bottom: 0;
-    background-color: #ffffff;
+    background-color: var(--color-background, #f3e8e4);
     color: #000000;
     font-weight: 700;
     text-transform: uppercase;
@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    background-color: #ffffff;
+    background-color: var(--color-background, #f3e8e4);
     padding: 0.5rem 1rem;
     border-bottom: 1px solid rgba(var(--color-text-rgb, 0, 0, 0), 0.12);
     height: 44px;
@@ -150,7 +150,7 @@
   position: absolute;
   width: 28px;
   height: 28px;
-  background-color: var(--color-accent, #FF6B35);
+  background-color: var(--color-accent, #c55121);
   border-radius: 50%;
   z-index: -1;
   opacity: 0.2;
@@ -279,7 +279,7 @@
 @media screen and (max-width: 599px) {
 
   .facets {
-    background: #ffffff;
+    background: var(--color-background, #f3e8e4);
     width: 100%;
     max-width: 100%;
     max-height: 90vh;
@@ -318,7 +318,7 @@
     left: 0;
     right: 0;
     padding: 1rem;
-    background: #ffffff;
+    background: var(--color-background, #f3e8e4);
     border-top: 1px solid rgba(var(--color-text-rgb, 0, 0, 0), 0.12);
     margin-left: 0;
     margin-right: 0;
@@ -412,7 +412,7 @@
   .facets-wrapper {
     flex-direction: column;
     width: 100%;
-    background: #ffffff;
+    background: var(--color-background, #f3e8e4);
     border: 1px solid rgba(var(--color-text-rgb, 0, 0, 0), 0.12);
     border-radius: 2px;
   }
@@ -420,7 +420,7 @@
   .facets {
     display: flex !important;
     flex-direction: column;
-    background: #ffffff;
+    background: var(--color-background, #f3e8e4);
     padding: 0 !important;
     max-height: none !important;
     overflow: visible !important;
@@ -445,7 +445,7 @@
 .facet { 
   border: none;
   border-bottom: 1px solid rgba(var(--color-text-rgb, 0, 0, 0), 0.08);
-  background: #ffffff;
+  background: var(--color-background, #f3e8e4);
   transition: all 0.2s ease;
 }
 
@@ -636,7 +636,7 @@
   font-size: 0.775rem;
   border: 1px solid var(--color-border, #DADADA);
   border-radius: 2px;
-  background-color: #ffffff;
+  background-color: var(--color-background, #f3e8e4);
   cursor: pointer;
   font-weight: 400;
   text-transform: uppercase;
@@ -718,12 +718,12 @@
   margin-bottom: 0;
   transition: border-color 0.2s ease;
   color: #000000;
-  background: #ffffff;
+  background: var(--color-background, #f3e8e4);
 }
 
 .facet__input:focus {
   outline: none;
-  border-color: var(--color-accent, #FF6B35);
+  border-color: var(--color-accent, #c55121);
 }
 
 .facet__input::placeholder {

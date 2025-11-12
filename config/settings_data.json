@@ -1,9 +1,9 @@
 {
   "current": {
     "color_primary": "#000000",
-    "color_accent": "#FF6B35",
+    "color_accent": "#c55121",
     "color_text": "#000000",
-    "color_background": "#FFFFFF",
+    "color_background": "#f3e8e4",
     "color_border": "#E0E0E0",
     "color_success": "#000000",
     "color_error": "#000000",
@@ -71,9 +71,9 @@
   "presets": {
     "Default": {
       "color_primary": "#000000",
-      "color_accent": "#FF6B35",
+      "color_accent": "#c55121",
       "color_text": "#000000",
-      "color_background": "#FFFFFF",
+      "color_background": "#f3e8e4",
       "cart_type": "drawer"
     }
   }

@@ -132,7 +132,7 @@
   font-size: 1rem;
   font-family: inherit;
   color: var(--color-text, #000000);
-  background-color: #ffffff;
+  background-color: var(--color-background, #f3e8e4);
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: all 0.2s ease;
@@ -204,7 +204,7 @@
 }
 
 .contact-form__submit:hover {
-  background-color: #ffffff;
+  background-color: var(--color-background, #f3e8e4);
   color: var(--color-text, #000000);
 }
 
