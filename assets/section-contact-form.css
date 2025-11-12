@@ -85,15 +85,17 @@
 .contact-form__title {
   margin: 0 0 0.5rem;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 700;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   letter-spacing: -0.02em;
-  color: var(--color-text, #000000);
+  color: #000000;
   line-height: 1.2;
 }
 
 .contact-form__subtitle {
   margin: 0;
   font-size: 1rem;
+  font-family: var(--font-body, 'Roboto', sans-serif);
   color: #666;
   line-height: 1.6;
 }
@@ -121,7 +123,8 @@
 .contact-form__label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-text, #000000);
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  color: #000000;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
@@ -130,8 +133,8 @@
 .contact-form__textarea {
   padding: 0.875rem 1rem;
   font-size: 1rem;
-  font-family: inherit;
-  color: var(--color-text, #000000);
+  font-family: var(--font-body, 'Roboto', sans-serif);
+  color: #000000;
   background-color: var(--color-background, #f3e8e4);
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -190,7 +193,8 @@
 .contact-form__submit {
   padding: 1rem 2rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05em;

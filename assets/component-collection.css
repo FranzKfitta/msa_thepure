@@ -23,6 +23,7 @@
 .collection__title { 
   font-size: 2.75rem;
   font-weight: 700;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   letter-spacing: -0.01em;
   line-height: 1.2;
   margin: 0 0 2rem 0;
@@ -31,6 +32,7 @@
   padding: 2.5rem;
   width: 100%;
   box-sizing: border-box;
+  color: #000000;
 }
 
 @media screen and (max-width: 599px) {
@@ -83,7 +85,8 @@
   border: none;
   padding: 0.5rem 0;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   text-transform: none;
   letter-spacing: 0;
   cursor: pointer;
@@ -366,6 +369,7 @@
 .facets__title {
   font-size: 1rem;
   font-weight: 700;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0;
@@ -460,7 +464,8 @@
 .facet__summary { 
   padding: 1rem; 
   cursor: pointer; 
-  font-weight: 700; 
+  font-weight: 600;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   text-transform: uppercase; 
   font-size: 0.75rem; 
   letter-spacing: 0.05em;
@@ -528,7 +533,8 @@
   align-items: center; 
   gap: 0.5rem; 
   cursor: pointer; 
-  font-weight: 400; 
+  font-weight: 400;
+  font-family: var(--font-body, 'Roboto', sans-serif);
   font-size: 0.8rem;
   user-select: none;
   color: #000000;
@@ -544,6 +550,7 @@
 
 .facet__count {
   font-size: 0.7rem;
+  font-family: var(--font-body, 'Roboto', sans-serif);
   color: rgba(var(--color-text-rgb, 0, 0, 0), 0.5);
   margin-left: auto;
 }
@@ -586,9 +593,10 @@
 }
 
 .collection__count { 
-  color: rgba(var(--color-text-rgb, 0, 0, 0), 0.55); 
+  color: rgba(var(--color-text-rgb, 0, 0, 0), 0.55);
+  font-family: var(--font-body, 'Roboto', sans-serif);
   font-size: 0.825rem; 
-  font-weight: 300; 
+  font-weight: 400; 
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin: 0;
@@ -639,9 +647,11 @@
   background-color: var(--color-background, #f3e8e4);
   cursor: pointer;
   font-weight: 400;
+  font-family: var(--font-body, 'Roboto', sans-serif);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: border-color 0.2s ease;
+  color: #000000;
 }
 
 .collection__sorting select:hover {
@@ -666,7 +676,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--color-accent, #c55121);
+  color: #000000;
   text-decoration: underline;
   transition: color 0.2s ease;
   background: none;
@@ -676,7 +686,7 @@
 }
 
 .facets__clear:hover {
-  color: var(--color-accent, #c55121);
+  color: #000000;
   opacity: 0.8;
 }
 
@@ -698,6 +708,7 @@
   margin-bottom: 0.5rem;
   font-size: 0.7rem;
   font-weight: 600;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #000000;
@@ -719,6 +730,7 @@
   margin-bottom: 0;
   transition: border-color 0.2s ease;
   color: #000000;
+  font-family: var(--font-body, 'Roboto', sans-serif);
   background: var(--color-background, #f3e8e4);
 }
 

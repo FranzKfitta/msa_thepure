@@ -138,7 +138,7 @@
 
 .language-switcher__menu-item--active {
   background-color: rgba(197, 81, 33, 0.15);
-  color: var(--color-accent, #c55121);
+  color: #000000;
   font-weight: 500;
 }
 
