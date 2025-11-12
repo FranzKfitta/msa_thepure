@@ -31,8 +31,10 @@
 .newsletter__heading { 
   font-size: 2rem; 
   margin-bottom: 1rem; 
-  font-weight: 300; 
-  letter-spacing: -0.02em; 
+  font-weight: 700;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
+  letter-spacing: -0.02em;
+  color: #000000;
 }
 
 @media screen and (max-width: 599px) {
@@ -43,7 +45,8 @@
 
 .newsletter__subheading { 
   margin-bottom: 2.5rem; 
-  font-weight: 300; 
+  font-weight: 400;
+  font-family: var(--font-body, 'Roboto', sans-serif);
   color: rgba(var(--color-text-rgb, 0, 0, 0), 0.6); 
 }
 
@@ -83,7 +86,8 @@
   color: white; 
   border-radius: var(--border-radius, 0); 
   margin-bottom: 1rem; 
-  font-weight: 300; 
+  font-weight: 400;
+  font-family: var(--font-body, 'Roboto', sans-serif);
 }
 
 .form-error { 
@@ -92,5 +96,6 @@
   color: white; 
   border-radius: var(--border-radius, 0); 
   margin-bottom: 1rem; 
-  font-weight: 300; 
+  font-weight: 400;
+  font-family: var(--font-body, 'Roboto', sans-serif);
 }

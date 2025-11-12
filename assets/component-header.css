@@ -137,10 +137,10 @@
 .header__logo-text {
   font-size: 0.875rem;
   font-weight: 700;
-  font-family: var(--font-heading, sans-serif);
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text, #000000);
+  color: #000000;
 }
 
 @media screen and (min-width: 600px) {
@@ -170,9 +170,10 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: var(--font-heading, 'Montserrat', sans-serif);
   font-size: 0.8125rem;
-  color: var(--color-text, #000000);
+  color: #000000;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: opacity 0.3s ease, color 0.3s ease;

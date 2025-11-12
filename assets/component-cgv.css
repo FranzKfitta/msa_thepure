@@ -128,7 +128,7 @@
 
 /* Link styling */
 .page-content.rte a {
-  color: var(--color-accent, #c55121);
+  color: #000000;
   text-decoration: underline;
   transition: opacity var(--transition-duration, 0.2s);
 }
