@@ -3,7 +3,7 @@
 
 .collaborations {
   position: relative;
-  background-color: #ffffff;
+  background-color: var(--color-background, #f3e8e4);
 }
 
 .collaborations .page-width {

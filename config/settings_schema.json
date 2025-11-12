@@ -23,9 +23,9 @@
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Accent color (Chiromani Orange)",
+        "label": "Accent color (Chiromani Piper)",
         "info": "Used for highlights, CTAs, and interactive elements",
-        "default": "#FF6B35"
+        "default": "#c55121"
       },
       {
         "type": "color",
@@ -36,8 +36,9 @@
       {
         "type": "color",
         "id": "color_background",
-        "label": "Background color",
-        "default": "#FFFFFF"
+        "label": "Background color (Chiromani Dawn)",
+        "info": "Primary background color - warm soft pink tone",
+        "default": "#f3e8e4"
       },
       {
         "type": "color",

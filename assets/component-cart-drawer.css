@@ -28,7 +28,7 @@
   width: 100%;
   max-width: 400px;
   height: 100%;
-  background-color: var(--color-surface, #ffffff);
+  background-color: var(--color-surface, #f3e8e4);
   transition: right 0.3s;
   z-index: 301;
   display: flex;

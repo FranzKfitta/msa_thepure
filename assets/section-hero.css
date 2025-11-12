@@ -94,9 +94,9 @@
 }
 
 .hero__content .button--primary {
-  background-color: #ffffff;
+  background-color: var(--color-background, #f3e8e4);
   color: #000000;
-  border-color: #ffffff;
+  border-color: var(--color-background, #f3e8e4);
 }
 
 .hero__content .button--primary:hover {
