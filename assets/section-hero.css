@@ -90,17 +90,17 @@
 .hero__content .button {
   margin-top: 2rem;
   color: #ffffff;
-  border-color: #ffffff;
+  border-color: var(--color-accent, #c55121);
 }
 
 .hero__content .button--primary {
-  background-color: var(--color-background, #f3e8e4);
-  color: #000000;
-  border-color: var(--color-background, #f3e8e4);
+  background-color: var(--color-accent, #c55121);
+  color: #ffffff;
+  border-color: var(--color-accent, #c55121);
 }
 
 .hero__content .button--primary:hover {
-  background-color: transparent;
+  background-color: #a63e1a;
   color: #ffffff;
 }
 

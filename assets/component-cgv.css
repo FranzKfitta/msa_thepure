@@ -128,13 +128,13 @@
 
 /* Link styling */
 .page-content.rte a {
-  color: var(--color-text, #000000);
+  color: var(--color-accent, #c55121);
   text-decoration: underline;
   transition: opacity var(--transition-duration, 0.2s);
 }
 
 .page-content.rte a:hover {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 /* Blockquote styling */

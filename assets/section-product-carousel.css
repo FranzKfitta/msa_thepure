@@ -94,15 +94,15 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: 1px solid var(--color-text, #000000);
+  border: 1px solid var(--color-accent, #c55121);
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 50%;
-  color: var(--color-text, #000000);
+  color: var(--color-accent, #c55121);
 }
 
 .product-carousel__nav:hover {
-  background-color: var(--color-text, #000000);
+  background-color: var(--color-accent, #c55121);
   color: #ffffff;
 }
 
@@ -113,7 +113,7 @@
 
 .product-carousel__nav:disabled:hover {
   background-color: transparent;
-  color: var(--color-text, #000000);
+  color: var(--color-accent, #c55121);
 }
 
 .product-carousel-card {
@@ -181,15 +181,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-background, #f3e8e4);
-  border: 1px solid var(--color-text, #000000);
+  background: #ffffff;
+  border: 1px solid var(--color-accent, #c55121);
   border-radius: 50%;
   cursor: pointer;
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.3s ease;
   z-index: 3;
-  color: var(--color-text, #000000);
+  color: var(--color-accent, #c55121);
 }
 
 .product-carousel-card:hover .product-carousel-card__add-to-cart {
@@ -198,7 +198,7 @@
 }
 
 .product-carousel-card__add-to-cart:hover {
-  background-color: var(--color-text, #000000);
+  background-color: var(--color-accent, #c55121);
   color: #ffffff;
 }
 

@@ -128,9 +128,9 @@
 }
 
 .variant-picker__input:checked + .variant-picker__button {
-  border-color: var(--color-text, #000000);
-  background-color: var(--color-text, #000000);
-  color: var(--color-background, #f3e8e4);
+  border-color: var(--color-accent, #c55121);
+  background-color: var(--color-accent, #c55121);
+  color: #ffffff;
 }
 
 .variant-picker__input:disabled + .variant-picker__button {
