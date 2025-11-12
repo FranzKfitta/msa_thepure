@@ -4,39 +4,27 @@
     <div class="product-card__image-wrapper">
       {% if product.featured_media %}
         <img
-           src="{{ product.featured_media | image_url: width: 400 }}"
-           srcset="
-             {{ product.featured_media | image_url: width: 200 }} 200w,
-             {{ product.featured_media | image_url: width: 400 }} 400w,
-             {{ product.featured_media | image_url: width: 600 }} 600w
-           "
-           sizes="(min-width: 990px) 14vw, (min-width: 750px) 50vw, 50vw"
-           alt="{{ product.featured_media.alt | escape }}"
-           loading="lazy"
-           width="400"
-           height="400"
-           class="product-card__image"
+          src="{{ product.featured_media | image_url: width: 800 }}"
+          srcset="
+            {{ product.featured_media | image_url: width: 400 }} 400w,
+            {{ product.featured_media | image_url: width: 600 }} 600w,
+            {{ product.featured_media | image_url: width: 800 }} 800w,
+            {{ product.featured_media | image_url: width: 1000 }} 1000w
+          "
+          sizes="(min-width: 1200px) 16vw, (min-width: 990px) 20vw, (min-width: 600px) 33vw, 50vw"
+          alt="{{ product.featured_media.alt | escape }}"
+          loading="lazy"
+          width="600"
+          height="800"
+          class="product-card__image"
         >
       {% else %}
         {{ 'product-1' | placeholder_svg_tag: 'product-card__image placeholder-svg' }}
       {% endif %}
-
-      {% if product.compare_at_price > product.price %}
-        <span class="product-card__badge badge badge--sale">{{ 'products.product.on_sale' | t }}</span>
-      {% endif %}
-
-      {% unless product.available %}
-        <span class="product-card__badge badge badge--sold-out">{{ 'products.product.sold_out' | t }}</span>
-      {% endunless %}
     </div>
 
     <div class="product-card__info">
-      {% if product.vendor != blank %}
-        <p class="product-card__vendor">{{ product.vendor }}</p>
-      {% endif %}
-
-      <h3 class="product-card__title">{{ product.title | escape }}</h3>
-
+      <h3 class="product-card__title">{{ product.title | escape | upcase }}</h3>
       <div class="product-card__price">
         {% render 'price', product: product, price_class: 'product-card__price-text' %}
       </div>

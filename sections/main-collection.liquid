@@ -1,172 +1,199 @@
 {{ 'component-collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'collection-filters.js' | asset_url }}" defer="defer"></script>
 
+{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+{% case sort_by %}
+  {% when 'manual' %}
+    {% assign current_sort_label = 'FEATURED' %}
+  {% when 'best-selling' %}
+    {% assign current_sort_label = 'BEST SELLING' %}
+  {% when 'title-ascending' %}
+    {% assign current_sort_label = 'A TO Z' %}
+  {% when 'title-descending' %}
+    {% assign current_sort_label = 'Z TO A' %}
+  {% when 'price-ascending' %}
+    {% assign current_sort_label = 'PRICE: LOW TO HIGH' %}
+  {% when 'price-descending' %}
+    {% assign current_sort_label = 'PRICE: HIGH TO LOW' %}
+  {% when 'created-descending' %}
+    {% assign current_sort_label = 'NEWEST' %}
+  {% when 'created-ascending' %}
+    {% assign current_sort_label = 'OLDEST' %}
+  {% else %}
+    {% assign current_sort_label = sort_by | upcase %}
+{% endcase %}
+
 <div class="collection" data-section-id="{{ section.id }}">
-  <h1 class="collection__title">{{ collection.title | escape }}</h1>
+  <div class="collection__inner page-width">
+    <h1 class="collection__title">{{ collection.title | escape | upcase }}</h1>
 
-  <div class="collection__controls-bar">
-    <button class="collection__filter-toggle" aria-label="Toggle filters" data-filter-toggle>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="4" y1="6" x2="20" y2="6"></line>
-        <line x1="4" y1="12" x2="20" y2="12"></line>
-        <line x1="4" y1="18" x2="20" y2="18"></line>
-      </svg>
-      <span class="collection__filter-label">{{ 'products.facets.filter_label' | t }}</span>
-    </button>
-    <div class="collection__view-toggle" data-view-toggle>
-      <button class="collection__view-toggle-btn" data-view-mode="list" aria-label="List view" title="List view">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <line x1="8" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2"/>
-          <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2"/>
-          <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2"/>
-          <circle cx="3" cy="6" r="1.5" fill="currentColor"/>
-          <circle cx="3" cy="12" r="1.5" fill="currentColor"/>
-          <circle cx="3" cy="18" r="1.5" fill="currentColor"/>
-        </svg>
-      </button>
-      <button class="collection__view-toggle-btn active" data-view-mode="grid" aria-label="Grid view" title="Grid view">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <rect x="3" y="3" width="7" height="7" fill="currentColor"/>
-          <rect x="14" y="3" width="7" height="7" fill="currentColor"/>
-          <rect x="3" y="14" width="7" height="7" fill="currentColor"/>
-          <rect x="14" y="14" width="7" height="7" fill="currentColor"/>
-        </svg>
-      </button>
-    </div>
-  </div>
+    <div class="collection__filters-bar">
+      {% assign has_filters = section.settings.enable_filtering and collection.filters != empty %}
+      {% if has_filters %}
+        <div class="collection__filters-primary">
+          <button type="button" class="collection__filters-trigger" data-mobile-filter-trigger aria-expanded="false" aria-controls="FacetFiltersForm-{{ section.id }}">
+            <span>{{ 'products.facets.filter_label' | t | default: 'Filters' | upcase }}</span>
+            {% render 'icon-chevron' %}
+          </button>
 
-  <div class="page-width collection__page-layout">
-    {% if section.settings.enable_filtering %}
-      <div class="collection__filters-sidebar">
-        <facet-filters-form class="facets-wrapper">
-          <form id="FacetFiltersForm" class="facets">
-            <div class="facets__header">
-              <h2 class="facets__title">{{ 'products.facets.filter_label' | t }}</h2>
-              <button type="button" class="facets__close-btn" aria-label="Close filters" data-filter-close>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
+          <div class="collection__filters-container" data-filters-container>
+            <div class="collection__filters-modal-header">
+              <span class="collection__filters-modal-title">{{ 'products.facets.filter_label' | t | default: 'Filters' | upcase }}</span>
+              <button type="button" class="collection__filters-close" data-mobile-filter-close aria-label="{{ 'general.accessibility.close_modal' | t | default: 'Close filters' | upcase }}">
+                {% render 'icon-close' %}
               </button>
             </div>
 
-            {% for filter in collection.filters %}
-              <details class="facet" data-index="{{ forloop.index }}">
-                <summary class="facet__summary">
-                  <span>{{ filter.label | escape }}</span>
-                  {% render 'icon-chevron' %}
-                </summary>
-                <div class="facet__content">
-                  {% case filter.type %}
-                    {% when 'list' %}
-                      <ul class="facet__list" role="list">
-                        {% for value in filter.values %}
-                          <li class="facet__item">
-                            <label class="facet__label">
-                              <input
-                                type="checkbox"
-                                name="{{ value.param_name }}"
-                                value="{{ value.value }}"
-                                {% if value.active %}checked{% endif %}
-                                class="facet__checkbox"
-                              >
-                              <span class="facet__text">{{ value.label | escape }}</span>
-                              <span class="facet__count">({{ value.count }})</span>
-                            </label>
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% when 'price_range' %}
-                      <div class="facet__price-range">
-                        <div class="facet__price-inputs">
-                          <label for="Filter-{{ filter.label | escape }}-GTE">
-                            {{ 'products.facets.from' | t }}
-                          </label>
-                          <input
-                            type="number"
-                            name="{{ filter.min_value.param_name }}"
-                            id="Filter-{{ filter.label | escape }}-GTE"
-                            {% if filter.min_value.value %}value="{{ filter.min_value.value | divided_by: 100.0 }}"{% endif %}
-                            placeholder="0"
-                            min="0"
-                            max="{{ filter.range_max | divided_by: 100.0 }}"
-                            class="facet__input"
-                          >
-                          <label for="Filter-{{ filter.label | escape }}-LTE">
-                            {{ 'products.facets.to' | t }}
-                          </label>
-                          <input
-                            type="number"
-                            name="{{ filter.max_value.param_name }}"
-                            id="Filter-{{ filter.label | escape }}-LTE"
-                            {% if filter.max_value.value %}value="{{ filter.max_value.value | divided_by: 100.0 }}"{% endif %}
-                            placeholder="{{ filter.range_max | divided_by: 100.0 }}"
-                            min="0"
-                            max="{{ filter.range_max | divided_by: 100.0 }}"
-                            class="facet__input"
-                          >
+            <facet-filters-form class="collection__filters-form">
+              <form id="FacetFiltersForm-{{ section.id }}" class="collection__filters-fields" data-filters-form>
+                <div class="collection__filters-list">
+                  {% assign filter_targets = 'product type|colour|color|size' | split: '|' %}
+                  {% assign rendered_filters = '|' %}
+                  {% for target in filter_targets %}
+                    {% assign normalized_target = target %}
+                    {% if target == 'color' %}
+                      {% assign normalized_target = 'colour' %}
+                    {% endif %}
+
+                    {% assign lookup_key = '|' | append: normalized_target | append: '|' %}
+                    {% if rendered_filters contains lookup_key %}
+                      {% continue %}
+                    {% endif %}
+
+                    {% assign matching_filter = blank %}
+                    {% for filter in collection.filters %}
+                      {% if filter.label %}
+                        {% assign filter_label = filter.label | downcase %}
+                        {% if filter_label == target %}
+                          {% assign matching_filter = filter %}
+                          {% break %}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if matching_filter != blank %}
+                      {% assign rendered_filters = rendered_filters | append: normalized_target | append: '|' %}
+                      {% assign dropdown_id = 'CollectionFilter-' | append: section.id | append: '-' | append: normalized_target | replace: ' ', '-' | replace: '/', '-' | replace: '&', '-' | replace: '--', '-' | downcase %}
+                      <div class="collection__filter" data-filter>
+                        <button type="button" class="collection__filter-button" aria-expanded="false" aria-controls="{{ dropdown_id }}" data-filter-button>
+                          <span class="collection__filter-label">{{ matching_filter.label | upcase }}</span>
+                          {% render 'icon-chevron' %}
+                        </button>
+                        <div class="collection__filter-dropdown" id="{{ dropdown_id }}" data-filter-dropdown>
+                          {% if matching_filter.type == 'list' %}
+                            <ul class="collection__filter-options" role="list">
+                              {% for value in matching_filter.values %}
+                                {% assign option_disabled = value.count == 0 and value.active == false %}
+                                {% assign option_id = dropdown_id | append: '-option-' | append: forloop.index %}
+                                <li class="collection__filter-option">
+                                  <label class="collection__filter-option-label{% if option_disabled %} is-disabled{% endif %}" for="{{ option_id }}">
+                                    <input
+                                      type="checkbox"
+                                      id="{{ option_id }}"
+                                      name="{{ value.param_name }}"
+                                      value="{{ value.value }}"
+                                      {% if value.active %}checked{% endif %}
+                                      {% if option_disabled %}disabled{% endif %}
+                                      class="collection__filter-checkbox"
+                                    >
+                                    <span class="collection__filter-option-text">{{ value.label | escape | upcase }}</span>
+                                  </label>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% elsif matching_filter.type == 'price_range' %}
+                            <div class="collection__filter-price">
+                              <label class="collection__filter-option-label" for="{{ dropdown_id }}-min">
+                                <span>{{ 'products.facets.from' | t | default: 'From' | upcase }}</span>
+                                <input
+                                  type="number"
+                                  id="{{ dropdown_id }}-min"
+                                  name="{{ matching_filter.min_value.param_name }}"
+                                  {% if matching_filter.min_value.value %}value="{{ matching_filter.min_value.value | divided_by: 100.0 }}"{% endif %}
+                                  min="0"
+                                  max="{{ matching_filter.range_max | divided_by: 100.0 }}"
+                                  class="collection__filter-input"
+                                >
+                              </label>
+                              <label class="collection__filter-option-label" for="{{ dropdown_id }}-max">
+                                <span>{{ 'products.facets.to' | t | default: 'To' | upcase }}</span>
+                                <input
+                                  type="number"
+                                  id="{{ dropdown_id }}-max"
+                                  name="{{ matching_filter.max_value.param_name }}"
+                                  {% if matching_filter.max_value.value %}value="{{ matching_filter.max_value.value | divided_by: 100.0 }}"{% endif %}
+                                  min="0"
+                                  max="{{ matching_filter.range_max | divided_by: 100.0 }}"
+                                  class="collection__filter-input"
+                                >
+                              </label>
+                            </div>
+                          {% endif %}
                         </div>
                       </div>
-                  {% endcase %}
-                 </div>
-              </details>
-            {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
 
-            {% if collection.filters != empty %}
-              <div class="facets__actions">
-                <button type="submit" class="facets__apply-btn">
-                  See {{ collection.products_count }} items
-                </button>
-              </div>
-            {% endif %}
-          </form>
-        </facet-filters-form>
-      </div>
-    {% endif %}
-
-    <div class="collection__content">
-      <div class="collection__header">
-        <div class="collection__header-top">
-          {% if section.settings.show_product_count %}
-            <p class="collection__count">{{ 'sections.collection.product_count' | t: count: collection.products_count }}</p>
-          {% endif %}
-
-          {% if section.settings.enable_sorting %}
-            <div class="collection__sorting">
-              <label for="SortBy" class="visually-hidden">{{ 'products.sorting.title' | t }}</label>
-              <select name="sort_by" id="SortBy" class="collection__sort-select" data-collection-sort>
-                {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
-                <option value="manual" {% if sort_by == 'manual' %}selected{% endif %}>{{ 'products.sorting.featured' | t }}</option>
-                <option value="best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>{{ 'products.sorting.best_selling' | t }}</option>
-                <option value="title-ascending" {% if sort_by == 'title-ascending' %}selected{% endif %}>{{ 'products.sorting.az' | t }}</option>
-                <option value="title-descending" {% if sort_by == 'title-descending' %}selected{% endif %}>{{ 'products.sorting.za' | t }}</option>
-                <option value="price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>{{ 'products.sorting.price_ascending' | t }}</option>
-                <option value="price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>{{ 'products.sorting.price_descending' | t }}</option>
-                <option value="created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>{{ 'products.sorting.date_descending' | t }}</option>
-                <option value="created-ascending" {% if sort_by == 'created-ascending' %}selected{% endif %}>{{ 'products.sorting.date_ascending' | t }}</option>
-              </select>
-            </div>
-          {% endif %}
+                <div class="collection__filters-footer">
+                  <button type="submit" class="collection__filters-apply">
+                    {{ 'products.facets.apply' | t | default: 'Apply Filters' | upcase }}
+                  </button>
+                </div>
+              </form>
+            </facet-filters-form>
+          </div>
         </div>
-      </div>
+      {% endif %}
 
-      <div class="collection__products">
-        <div class="product-grid product-grid--{{ section.settings.columns_desktop }}-col-desktop product-grid--{{ section.settings.columns_mobile }}-col-mobile">
-          {% for product in collection.products %}
-            {% render 'product-card', product: product %}
-          {% else %}
-            <div class="collection__empty">
-              <p>{{ 'sections.collection.empty' | t }}</p>
+      <div class="collection__meta">
+        {% if section.settings.show_product_count %}
+          <span class="collection__count">{{ collection.products_count }} {{ 'general.items' | t | default: 'Items' | upcase }}</span>
+        {% endif %}
+
+        {% if section.settings.enable_sorting %}
+          <span class="collection__meta-divider" aria-hidden="true"></span>
+          <div class="collection__sort" data-sort>
+            <button type="button" class="collection__sort-toggle" data-sort-toggle aria-expanded="false" data-current-sort="{{ sort_by }}">
+              <span class="collection__sort-label">{{ 'products.sorting.title' | t | default: 'Sort' | upcase }}</span>
+              <span class="collection__sort-value">{{ current_sort_label }}</span>
+              {% render 'icon-chevron' %}
+            </button>
+            <div class="collection__sort-dropdown" data-sort-dropdown>
+              <button type="button" class="collection__sort-option{% if sort_by == 'manual' %} is-active{% endif %}" data-sort-value="manual">FEATURED</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'best-selling' %} is-active{% endif %}" data-sort-value="best-selling">BEST SELLING</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'title-ascending' %} is-active{% endif %}" data-sort-value="title-ascending">A TO Z</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'title-descending' %} is-active{% endif %}" data-sort-value="title-descending">Z TO A</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'price-ascending' %} is-active{% endif %}" data-sort-value="price-ascending">PRICE: LOW TO HIGH</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'price-descending' %} is-active{% endif %}" data-sort-value="price-descending">PRICE: HIGH TO LOW</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'created-descending' %} is-active{% endif %}" data-sort-value="created-descending">NEWEST</button>
+              <button type="button" class="collection__sort-option{% if sort_by == 'created-ascending' %} is-active{% endif %}" data-sort-value="created-ascending">OLDEST</button>
             </div>
-          {% endfor %}
-        </div>
-
-        {% if paginate.pages > 1 %}
-          {% render 'pagination', paginate: paginate %}
+          </div>
         {% endif %}
       </div>
     </div>
+
+    {% paginate collection.products by section.settings.products_per_page %}
+      <div class="collection__grid" id="CollectionGrid-{{ section.id }}">
+        {% for product in paginate.items %}
+          {% render 'product-card', product: product %}
+        {% else %}
+          <div class="collection__empty">
+            <p>{{ 'sections.collection.empty' | t | default: 'No products found' | upcase }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        {% render 'pagination', paginate: paginate %}
+      {% endif %}
+    {% endpaginate %}
   </div>
+
+  {% if has_filters %}
+    <div class="collection__filters-overlay" data-filters-overlay></div>
+  {% endif %}
 </div>
 
 {% schema %}
